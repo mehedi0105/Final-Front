@@ -684,13 +684,12 @@ const handleManageTasks= () =>{
         {
           data.forEach(async(element) => {
             console.log(element.seller)
-            if(element.seller == user_id){
-              // alert()
-            bids++;
+            const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
+            if(String(company) == user_id){
+            
             // console.log(element.cover_letter)
             const tr = document.createElement("tr");
             const username = localStorage.getItem("username");
-            const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
             const company_name = await getIdSendUsername(company);
             const hanldeAction = await hanldeActions(element.job);
             tr.innerHTML = `
