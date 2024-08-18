@@ -154,7 +154,7 @@
     <!-- Custom Script File(start) -->
     <script>
       const getIdSendUsername = (id) =>{
-         return fetch(`http://127.0.0.1:8000/getUserName/${id}/`)
+         return fetch(`https://final-s1v0.onrender.com/getUserName/${id}/`)
               .then((res)=>res.json())
               .then((data)=>{
                   return data.username;
@@ -162,7 +162,7 @@
       }
 
       const getIdSendTittle = (id) =>{
-        return fetch(`http://127.0.0.1:8000/seller/jobDetails/${id}/`)
+        return fetch(`https://final-s1v0.onrender.com/seller/jobDetails/${id}/`)
           .then((res) => res.json())
           .then((data) => {
               return data.tittle;
@@ -179,7 +179,7 @@
               parent.innerHTML = "";
           }
       
-          fetch(`http://127.0.0.1:8000/seller/jobDetails/${id}/`)
+          fetch(`https://final-s1v0.onrender.com/seller/jobDetails/${id}/`)
           .then((res) => res.json())
           .then(async (data) => {
               if (user_type === "seller") {
@@ -353,7 +353,7 @@
     };
     console.log(JobApplyForm);
 
-    fetch("http://127.0.0.1:8000/seller/apply_job/", {
+    fetch("https://final-s1v0.onrender.com/seller/apply_job/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -379,7 +379,7 @@
               parent.innerHTML = "";
           }
         console.log(id)
-      fetch("http://127.0.0.1:8000/seller/apply_job/")
+      fetch("https://final-s1v0.onrender.com/seller/apply_job/")
         .then((res)=>res.json())
         .then((data)=>{
           data.forEach(async(element) => {
