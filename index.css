@@ -1,0 +1,522 @@
+
+.intro-banner.boxed .container {
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    background-size: 55%;
+    padding: 80px 0;
+}
+.intro-banner.boxed {
+    background-color: #ECFAF2B3;
+    background-image: url("https://workscout.in/wp-content/uploads/2022/02/bg.svg");
+    background-size: Array;
+}
+
+.intro-banner.boxed .container {
+    background-image: url(https://workscout.in/wp-content/uploads/2022/02/Interview-bro.svg);
+    background-size: 47%;
+    background-repeat: no-repeat;
+    background-position-x: 101%;
+    background-position-y: 51%;
+}
+
+.boxed-search-container {
+    width: 500px;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 0 12px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-top: 135px;
+}
+
+.banner-headline-alt h3 {
+    font-size: 38px;
+    font-weight: 400;
+    color: #333;
+    line-height: 30px;
+}
+
+.banner-headline-alt h3 strong {
+    font-size: 30px;
+    font-weight: 500;
+    display: block;
+}
+
+.banner-headline-alt span {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: -5px;
+    color: #999;
+}
+
+.intro-search-field {
+    padding: 0;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.intro-banner-search-form input {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: #f4f4f4;
+    padding: 18px;
+    font-weight: 400;
+    font-size: 15px;
+    height: 56px;
+}
+
+.intro-search-field select {
+    font-size: 15.5px;
+    font-weight: 400;
+    background: #f0f0f0;
+    border-radius: 4px;
+    height: 55px;
+    padding: 8px;
+    width: 100%;
+    border: none;
+    color: #999;
+}
+
+.intro-search-button {
+    margin: 8px;
+    margin-left: 0;
+    flex: auto;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.intro-search-button .button {
+    height: 52px;
+    line-height: 52px;
+    padding: 0 25px;
+    font-size: 16px;
+    font-weight: 500;
+    background: #28b661;
+    border-radius: 4px;
+    color: #fff;
+    transition: 0.2s;
+    position: relative;
+    border: none;
+}
+
+.elementor-element-680244c {
+    margin-top: 45px;
+    margin-bottom: 0px;
+}
+
+.elementor-container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.elementor-widget-wrap {
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.elementor-widget:not(:last-child) {
+    margin-block-end: 20px;
+}
+
+.elementor-widget:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.elementor-widget-wrap>.elementor-element {
+    width: 100%;
+}
+.elementor-element {
+    --widgets-spacing: 20px 20px;
+}
+
+.listings-loader {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 30px);
+}
+
+.grid-layout .job-listing.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 30px 30px 0;
+    /* width: calc(100% * (1/2) - 30px); */
+    flex-direction: column;
+    position: relative;
+}
+
+.grid-layout.grid-three-in-row .job-listing.grid {
+    width: calc(100% * (1/3) - 30px);
+}
+
+.job-listing.grid {
+    display: block;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid #e0e0e0!important;
+    margin-bottom: 35px;
+    background-color: #fff;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.grid-layout .job-listing-details {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 30px;
+    padding-right: 40px;
+}
+
+
+
+.grid-layout .job-listing .job-listing-company-logo {
+    max-width: 60px;
+    margin-right: 24px;
+    top: 1px;
+    flex: 0 0 60px;
+}
+
+.job-listing.grid .job-listing-company-logo img{
+    flex: 1;
+    max-width: 55px;
+    margin-right: 25px;
+    position: relative;
+    top: 3px;
+}
+
+.job-listing.grid .job-listing-description {
+    flex: 1;
+    padding-top: 3px;
+}
+
+.job-listing.grid h4.job-listing-company {
+    font-size: 14px;
+    color: gray;
+    font-weight: 400;
+    margin-top: 0;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.grid-layout .job-listing h3.job-listing-title {
+    font-size: 20px;
+    line-height: 30px;
+    color: #333;
+}
+
+.job-listing.grid .listing-types-list {
+    display: block;
+    position: relative;
+    top: 0;
+    transform: none;
+    right: 0;
+    max-width: 100%;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.job-listing.grid .listing-types-list span {
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    margin: 3px 3px 0 0;
+    padding: 3px 6px;
+    line-height: 20px;
+}
+
+span.full-time {
+    background-color: #186fc9;
+}
+span.internship {
+    background-color: #e1d123;
+}
+span.temporary {
+    background-color: #e12335;
+}
+
+.job-listing.grid .job-listing-footer {
+    background-color: #f9f9f9;
+    padding: 18px 35px;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+}
+
+.grid-layout .job-listing-footer {
+    flex-grow: 0;
+    padding: 20px 30px;
+}
+.job-listing.grid .job-listing-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.job-listing.grid .job-listing-footer ul li {
+    display: inline-block;
+    margin-right: 14px;
+    color: #777;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.job-listing.grid .job-listing-footer ul li i {
+    position: relative;
+    top: 1px;
+    margin-right: 3px;
+    color: #777;
+    font-size: 16px;
+}
+
+.job-list li.job-listing.grid.job_position_featured {
+    background-color: #fff!important;
+    border-color: #fac710!important;
+    z-index: 100!important;
+}
+.new-layout .listing-badge {
+    background-color: #fff4cc;
+    float: left;
+    position: absolute;
+    transform: rotate(45deg);
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    z-index: 999;
+    color: #fff;
+    font-weight: 500;
+    width: 66px;
+    height: 66px;
+    right: -33px;
+    top: -33px;
+    line-height: 106px;
+    color: #fac710;
+}
+a.load_more_jobs.button, .button.send-message-to-owner, .resume-template-default .button.send-message-to-owner, .browse-all-cat-btn a {
+    box-shadow: 0 4px 12px rgba(38,174,97, 0.25);
+}
+body a.button {
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #28b661;
+}
+
+.job_filters_links a, a.button.gray.app-link.opened, .resume-manager-add-row, .upload-btn, .load_more_resumes, button, .button, a.vc_inline-link, a.post-edit-link, input[type="button"], input[type="submit"], a.button {
+    cursor: pointer;
+    padding: 10px 20px;
+    display: inline-block;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 14px;
+    outline: none;
+    overflow: hidden;
+    line-height: 27px;
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    background-color: #505050;
+    border: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
+    box-shadow: 3px;
+    text-decoration: none;
+}
+
+a.button.centered {
+    display: table;
+    margin: 0 auto;
+}
+
+
+/* .elementor-widget-container.headline.centered {
+    
+} */
+
+.headline.centered span {
+    font-size: 20px;
+    line-height: 8px;
+    margin-top: 25px;
+    color: #888;
+    font-weight: 300;
+    display: block;
+    padding: 0 28%;
+}
+
+.category-card {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    width: 22%;
+}
+.category-card img {
+    max-width: 100%;
+    height: auto;
+}
+.browse-btn {
+    margin-top: 20px;
+}
+
+.img-box-content {
+    position: relative;
+    z-index: 101;
+    width: auto;
+    font-weight: 500;
+    color: #fff;
+    margin: 0;
+    padding: 40px;
+    transition: 0.6s;
+    display: block;
+    background: rgb(25 25 25 / 45%);
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 12px 2px;
+    transform: none;
+    text-align: left;
+    bottom: 15px;
+    top: 150px;
+    bottom: initial;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.img-box-content {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.elementor-column {
+    position: relative;
+    min-height: 1px;
+    display: flex;
+}
+
+
+
+.up-text-box h2{
+    
+        font-size: 26px;
+        width: 100%;
+        line-height: 32px;
+        margin: 0 0 30px 0;
+    
+}
+
+.up-text-box p{
+    
+    
+        font-size: 20px;
+        line-height: 32px;
+        margin-top: -20px;
+        color: #888;
+        font-weight: 300;
+        display: block;
+        padding: 0 28%;
+    
+    
+}
+
+.reveiw-box{
+    width: 30%;
+    text-align: center;
+    margin-top: 25px;
+    opacity: 55%;
+}
+
+.reveiw-box p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 50px;
+}
+
+.bellow-box h5 {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 0px;
+    padding: 0;
+    margin-top: 24px;
+    color: #333;
+    font-weight: 500;
+}
+
+.bellow-box p{
+    
+        display: block;
+        width: 100%;
+        padding: 0px 0 15px 0;
+        text-align: center;
+        margin: 0 auto;
+    
+}
+
+.footer {
+    background-color: #282828;
+    color: white;
+    padding: 40px 0;
+}
+.footer a {
+    color: #adb5bd;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: white;
+}
+.footer .social-icons a {
+    margin: 0 10px;
+    color: #adb5bd;
+    
+}
+.footer .social-icons a:hover {
+    color: white;
+}
+.list-unstyled li{
+    list-style: none;
+}
+.list-unstyled li a{
+    color: #909090;
+    display: inline-block;
+    line-height: 22px;
+    position: relative;
+    z-index: 100;
+    padding: 2px 0;
+    font-size: 14px;
+}
+.footer-title{
+    color: white;
+}

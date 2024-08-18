@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Freelance Marketplace</title>
+
+    <!-- Custom link File(start) -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- Custom link File(end) -->
+  </head>
+  <body>
+    <header>
+      <!-- <div id="navigation-bar"></div> -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container" id="navigation-bar"></div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="intro-banner boxed dark-overlay-boxed">
+        <!-- Transparent Header Spacer -->
+        <div class="transparent-header-spacer"></div>
+        <div class="container" style="height: 740px;">
+          <div class="boxed-search-container">
+           
+
+            <div class="banner-headline-alt">
+              <h3>
+                <strong>Find Job</strong>
+                <span> Hire Experts or be hired in sales marketing | </span>
+              </h3>
+            </div>
+
+            <form
+              method="GET"
+              class="workscout_main_search_form"
+              action="http://127.0.0.1:5500/Frontend/browse_job.html"
+            >
+             
+
+              <div class="intro-banner-search-form">
+                
+
+               
+                <div class="intro-search-field">
+                  <select
+                    name="search_category"
+                    id="search_category"
+                    class="select-on-home select2-hidden-accessible"
+                    tabindex="-1"
+                    aria-hidden="true"
+                  >
+                    <option value="0" selected="selected">
+                      All Categories
+                    </option>
+                    <option class="level-0" value="122">
+                      Consulting
+                    </option>
+                    <option class="level-0" value="124">Automotive Jobs</option>
+                    <option class="level-0" value="132">
+                      Business
+                    </option>
+                    <option class="level-0" value="140">
+                      Music & Audio
+                    </option>
+                    <option class="level-0" value="157">Food Services</option>
+                    <option class="level-0" value="146">Healthcare</option>
+                    <option class="level-0" value="159">
+                      AI Services
+                    </option>
+                    <option class="level-1" value="178">
+                      Video & Animation
+                    </option>
+                    <option class="level-0" value="165">
+                      Writing & Translation
+                    </option>
+                    <option class="level-0" value="167">
+                      Digital Marketing
+                    </option>
+                    <option class="level-0" value="168">
+                      Graphics & Design
+                    </option>
+                    <option class="level-0" value="169">
+                      Programming & Tech
+                    </option>
+                  </select>
+                </div>
+
+              
+                <div class="intro-search-button">
+                  <button type="submit" class="button ripple-effect">
+                    <span>Search</span>
+                    <i></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+    
+        </div>
+      </div>
+
+      <section
+        class="elementor-section container elementor-top-section elementor-element elementor-element-680244c elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+        data-id="680244c"
+        data-element_type="section"
+      >
+        <div class="elementor-container elementor-column-gap-default">
+          <div
+            class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-627c3e2"
+            data-id="627c3e2"
+            data-element_type="column"
+          >
+            <div class="elementor-widget-wrap elementor-element-populated">
+              <div
+                class="elementor-element elementor-element-49eed08 elementor-widget elementor-widget-workscout-headline"
+                data-id="49eed08"
+                data-element_type="widget"
+                data-widget_type="workscout-headline.default"
+              >
+                <div class="elementor-widget-container">
+                  <h3
+                    style="text-align: left"
+                    class="headline headline-aligned-to-left"
+                  >
+                    Recent Jobs
+                  </h3>
+                </div>
+              </div>
+              <div
+                class="elementor-element elementor-element-c3c01b4 elementor-widget elementor-widget-workscout-jobs"
+                data-id="c3c01b4"
+                data-element_type="widget"
+                data-widget_type="workscout-jobs.default"
+              >
+                <div class="elementor-widget-container">
+                  <div
+                    class="job_listings"
+                    data-location=""
+                    data-keywords=""
+                    data-show_filters="false"
+                    data-show_pagination="false"
+                    data-featured=""
+                    data-filled="false"
+                    data-per_page="6"
+                    data-orderby="date"
+                    data-remote_position=""
+                    data-order="DESC"
+                    data-list_layout="grid-three-in-row"
+                    data-categories=""
+                    data-disable-form-state-storage=""
+                    data-post_status="publish"
+                    data-post_id="22274"
+                  >
+                    <!-- Listings Loader -->
+                    <div class="listings-loader" style="display: none">
+                      <div class="spinner">
+                        <div class="double-bounce1"></div>
+                        <div class="double-bounce2"></div>
+                      </div>
+                    </div>
+
+                    <ul
+                      class="job_listings job-list full grid-layout grid-three-in-row new-layout hide-desc" id="view-sixth-post"
+                    >
+                     
+                    </ul>
+
+                    <a class="load_more_jobs button centered" href="./browse_job.html"
+                      ><i class="fa-plus-circle fa"></i>Show More Jobs</a
+                    >
+                    <div class="margin-bottom-55"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="elementor-section elementor-top-section w-100 elementor-element elementor-element-c9e20a0 elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+        data-id="c9e20a0"
+        data-element_type="section"
+        data-settings='{"stretch_section":"section-stretched"}'
+        style="
+          width: 1349px;
+          left: -84.5px;
+          margin-top: 50px;
+          border-top: 1px solid gray;
+          padding-top: 25px;
+        "
+      >
+        <div
+          class="elementor-container elementor-column-gap-no container w-100" 
+        >
+          <div
+            class="elementor-column elementor-col-100 w-100 elementor-top-column elementor-element elementor-element-70e3afd"
+            data-id="70e3afd"
+            data-element_type="column"
+          >
+            <div class="elementor-widget-wrap elementor-element-populated">
+              <div
+                class="elementor-element elementor-element-5762a43 elementor-widget elementor-widget-workscout-headline"
+                data-id="5762a43"
+                data-element_type="widget"
+                data-widget_type="workscout-headline.default"
+              >
+                <div class="elementor-widget-container">
+                  <h3
+                    class="headline headline-aligned-to-center centered headline-extra-spacing headline-with-subtitle text-center"
+                    style="
+                      font-size: 26px;
+                      width: 100%;
+                      line-height: 32px;
+                      margin: 0 0 30px 0;
+                    "
+                  >
+                    Popular Categories
+                    <span> Find the right industry for your career</span>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="d-flex flex-wrap gap-2">
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2022/02/balazs-ketyi-_x335IZXxfc-unsplash.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Design, Art & Multimedia</h5>
+            </div>
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2022/02/daniel-mccullough-HtBlQdxfG9k-unsplash.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Construction / Facilities</h5>
+            </div>
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2022/02/owen-beard-DK8jXx1B-1c-unsplash.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Healthcare</h5>
+            </div>
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2022/02/jakob-owens-WUmb_eBrpjs-unsplash.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Public Relations</h5>
+            </div>
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2022/02/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Education Training</h5>
+            </div>
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2023/11/promotion-product-strategy-marketing-concept.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Sales & Marketing</h5>
+            </div>
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2022/02/chad-montano-MqT0asuoIcU-unsplash.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Food Services</h5>
+            </div>
+            <div
+              class="category-card"
+              style="
+                background-image: url('https://workscout.in/wp-content/uploads/2022/02/pexels-tom-fisk-1427107.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 250px;
+                background-size: cover;
+              "
+              onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              <h5 class="img-box-content">Transportation / Logistics</h5>
+            </div>
+          </div>
+          <div class="text-center browse-btn">
+            <button
+              class="load_more_jobs button centered"
+              style="background-color: #28b661" onclick="window.location.href='http://127.0.0.1:5500/Frontend/browse_job.html'"
+            >
+              Browse All Categories
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="elementor-section mt-5 w-100 elementor-top-section elementor-element elementor-element-7716cda elementor-section-content-middle elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+        data-id="7716cda"
+        data-element_type="section"
+        data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
+        style="width: 1349px; left: -84.5px; background-color: #f8f8f8"
+      >
+        <div class="elementor-container elementor-column-gap-default container">
+          <div
+            class="elementor-column elementor-col-100 w-100 pt-5 elementor-top-column elementor-element elementor-element-0a7af72"
+            data-id="0a7af72"
+            data-element_type="column"
+          >
+            <div class="elementor-widget-wrap elementor-element-populated">
+              <div
+                class="elementor-element elementor-element-4aedfb4 elementor-widget elementor-widget-workscout-headline"
+                data-id="4aedfb4"
+                data-element_type="widget"
+                data-widget_type="workscout-headline.default"
+              >
+                <div class="elementor-widget-container">
+                  <h3
+                    style="text-align: center"
+                    class="headline headline-aligned-to-center centered headline-extra-spacing headline-with-subtitle"
+                  >
+                    How It Works?
+                    <span> WorkScout helps you achieve your goals!</span>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="background-color: #f8f8f8; padding-bottom: 70px">
+        <div class="d-flex flex-wrap gap-4 container pt-5">
+          <div
+            class="how-it-works"
+            style="
+              width: 32%;
+              background-color: #fff;
+              text-align: center;
+              padding: 0px 40px 20px 40px;
+              border: 1px solid rgb(192, 191, 191);
+            "
+          >
+            <img style="padding: 40px" src="./images/1.jpg" alt="Post a Job" />
+            <h5 style="font-weight: 500; font-size: 20px">Post a Job</h5>
+            <p style="font-size: 15px; line-height: 26px; color: #777">
+              Select a package that suits your needs and submit your job
+              details.
+            </p>
+          </div>
+          <div
+            class="col-md-4 how-it-works"
+            style="
+              width: 32%;
+              background-color: #fff;
+              text-align: center;
+              padding: 0px 40px 20px 40px;
+              border: 1px solid rgb(192, 191, 191);
+            "
+          >
+            <img style="padding: 40px" src="./images/2.jpg" alt="Advertise" />
+            <h5 style="font-weight: 500; font-size: 20px">Advertise</h5>
+            <p style="font-size: 15px; line-height: 26px; color: #777">
+              Advertise your listings and find candidates interested in your job
+              offer.
+            </p>
+          </div>
+          <div
+            class="col-md-4 how-it-works"
+            style="
+              width: 32%;
+              background-color: #fff;
+              text-align: center;
+              padding: 0px 40px 20px 40px;
+              border: 1px solid rgb(192, 191, 191);
+            "
+          >
+            <img style="padding: 40px" src="./images/3.jpg" alt="Recruit" />
+            <h5 style="font-weight: 500; font-size: 20px">Recruit</h5>
+            <p style="font-size: 15px; line-height: 26px; color: #777">
+              Allow candidates to apply to jobs via a form and rate or comment
+              on them.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="p-5">
+        <div class="up-text-box text-center">
+          <h2>What Our Users Say 😍</h2>
+          <p>Check honest reviews from our customers!</p>
+        </div>
+        <div class="reveiw-box-container d-flex flex-wrap gap-5">
+          <div class="reveiw-box">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo
+              dignissimos consectetur voluptas a beatae quos odit maxime
+              officiis consequatur, quis omnis quasi aliquam blanditiis veniam
+              ratione porro provident sequi pariatur.
+            </p>
+            <div class="bellow-box">
+              <img src="https://workscout.in/wp-content/uploads/2015/10/resumes-list-avatar-01.png" width="18%" class="rounded-circle" alt="">
+              <h5>Tom Mudo</h5>
+              <p>HR,Specalist</p>
+            </div>
+          </div>
+          <div class="reveiw-box" style="opacity: 100%;">
+            <p class="p-4 rounded" style="background-color: #282828; color: #f8f8f8; ">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo
+              dignissimos consectetur voluptas a beatae quos odit maxime
+              officiis consequatur, quis omnis quasi aliquam blanditiis veniam
+          
+            </p>
+            <div class="bellow-box">
+              <img src="https://workscout.in/wp-content/uploads/2015/10/resumes-list-avatar-02.png" width="18%" class="rounded-circle" alt="">
+              <h5>Tom Mudo</h5>
+              <p>HR,Specalist</p>
+            </div>
+          </div>
+          <div class="reveiw-box">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo
+              dignissimos consectetur voluptas a beatae quos odit maxime
+              officiis consequatur, quis omnis quasi aliquam blanditiis veniam
+              ratione porro provident sequi pariatur.
+            </p>
+            <div class="bellow-box">
+              <img src="https://workscout.in/wp-content/uploads/2015/10/resumes-list-avatar-03.png" width="18%" class="rounded-circle" alt="">
+              <h5>Tom Mudo</h5>
+              <p>HR,Specalist</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-2">
+                  <h5>For Candidates</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="./login.html">Browse Jobs</a></li>
+                      <li><a href="./login.html">Add Resume</a></li>
+                      <li><a href="./login.html">Candidate Dashboard</a></li>
+                      <li><a href="./login.html">Job Alerts</a></li>
+                      <li><a href="./login.html">My Bookmarks</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-2">
+                  <h5>For Employers</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="./login.html">Browse Candidates</a></li>
+                      <li><a href="./login.html">Employer Dashboard</a></li>
+                      <li><a href="./login.html">Add Job</a></li>
+                      <li><a href="./login.html">Job Packages</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-2">
+                  <h5>Other</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="./login.html">Job Page</a></li>
+                      <li><a href="./login.html">Task Page</a></li>
+                      <li><a href="./login.html">Resume Page</a></li>
+                      <li><a href="./login.html">Blog</a></li>
+                      <li><a href="./login.html">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-2">
+                  <h5>Legal</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="./login.html">Privacy Policy</a></li>
+                      <li><a href="./login.html">Terms of Use</a></li>
+                      <li><a href="./login.html">FAQ</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <h5>Sign Up For a Newsletter</h5>
+                  <form class="form-inline">
+                      <input type="email" style="background-color: #909090;" class="form-control mb-2 mr-sm-2" placeholder="Enter your email here">
+                      <button type="submit"  class="btn btn-primary mb-2">Subscribe</button>
+                  </form>
+              </div>
+          </div>
+          
+              <!-- <div class="col-md-6 text-md-right social-icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div> -->
+          <div class="row mt-4">
+              <div class="col-md-12 text-center">
+                  <p style="color: #909090; border-top: 1px solid gray; padding-top: 10px;">© 2024 Your Company. All Rights Reserved.</p>
+              </div>
+          </div>
+      </div>
+  </footer>
+    <!-- Custom Script File(start) -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./app.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./index.js"></script>
+
+    <!-- Custom Script File(start) -->
+  </body>
+</html>

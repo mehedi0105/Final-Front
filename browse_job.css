@@ -1,0 +1,399 @@
+
+.wt-innerbannerholder {
+    height: 300px;
+    background-image: url(https://amentotech.com/htmls/worktern/images/bannerimg/img-02.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /* -webkit-align-content: center; */
+    -ms-flex-line-pack: center;
+    position: relative;
+    margin-top: 83px;
+}
+
+.wt-innerbannerholder h2 {
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 45px;
+    color: #fff;
+}
+
+.wt-main-section {
+    padding: 80px 0;
+}
+.wt-haslayout {
+    width: 100%;
+    float: left;
+}
+
+.wt-widget {
+    float: left;
+    width: 100%;
+    padding: 30px;
+    margin: 0 0 30px;
+    background: #fff;
+    border-radius: 4px;
+    height: 552px;
+}
+.wt-widgettitle {
+    margin-bottom: 30px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #ddd;
+}
+.wt-widgettitle h2 {
+    margin: 0;
+    display: block;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+}
+.wt-formtheme {
+    width: 100%;
+    float: left;
+}
+.wt-formtheme fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.form-group {
+    width: 100%;
+    float: left;
+    margin: 0 0 20px;
+}
+.wt-formsearch > fieldset > .form-group {
+    margin: 0 0 30px;
+}
+.wt-formsearch fieldset .form-group .form-control {
+    width: 100%;
+    padding-right: 60px;
+}
+textarea, select, .wt-select select, .form-control, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    color: #999;
+    outline: none;
+    height: 50px;
+    background: #fff;
+    font-size: 14px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    line-height: 18px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #dbdbdb;
+    text-transform: inherit;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.wt-searchgbtn {
+    top: 0;
+    right: 0;
+    color: #fff;
+    width: 50px;
+    display: block;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    border-left: 1px solid #ddd;
+    border-radius: 0 5px 5px 0;
+    /* background: #ff5851; */
+}
+.wt-formtheme fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+.wt-formsearch fieldset .wt-checkboxholder {
+    max-height: 150px;
+}
+.wt-formsearch fieldset .wt-checkboxholder {
+    margin: 0;
+}
+.wt-checkboxholder {
+    float: left;
+    width: 100%;
+    margin: 30px 0 0;
+}
+.mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: none;
+    direction: ltr;
+}
+.mCSB_inside > .mCSB_container {
+    margin-right: 30px;
+}
+.mCSB_container {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+.wt-checkboxholder .wt-radio, .wt-checkboxholder .wt-checkbox {
+    margin: 0 0 20px;
+    display: flex;
+}
+.wt-radio, .wt-radio label, .wt-checkbox, .wt-checkbox label {
+    margin: 0;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+/* .wt-radio input[type=radio], .wt-checkbox input[type=checkbox] {
+    display: flex;
+} */
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+/* .wt-radio input[type=radio], .wt-checkbox input[type=checkbox] {
+    display: flex;
+} */
+.wt-formsearch fieldset .wt-checkboxholder .wt-checkbox label {
+    font-size: 14px;
+    color: #767676;
+}
+.wt-checkbox input[type=checkbox] + label, .wt-radio input[type=radio] + label {
+    color: #767676;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 0 0 0 30px;
+    text-transform: capitalize;
+}
+.wt-radio label, .wt-checkbox label {
+    cursor: pointer;
+    display: block;
+    padding: 0 0 0 20px;
+}
+.wt-radio, .wt-radio label, .wt-checkbox, .wt-checkbox label {
+    margin: 0;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+label {
+    color: #666;
+    display: block;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.wt-userlistingtitle {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.wt-userlistingtitle span {
+    display: block;
+    font: 400 16px/18px 'Poppins', Arial, Helvetica, sans-serif;
+}
+.wt-filterholder {
+    float: left;
+    width: 100%;
+    margin: 0 0 30px;
+}
+.wt-userlistingholdvtwo {
+    min-height: 281px;
+    position: relative;
+}
+.wt-featured {
+    background: #fffdf3;
+    position: relative;
+    overflow: hidden;
+}
+.wt-userlistinghold {
+    float: left;
+    width: 100%;
+    padding: 30px;
+    background: #fff;
+    border-radius: 4px;
+}
+.wt-userlistinghold:hover {
+    -webkit-box-shadow: 10px 10px 20px 0 rgba(0,0,0,0.25);
+    box-shadow: 10px 10px 20px 0 rgba(0,0,0,0.25);
+}
+.wt-userlistinghold + .wt-userlistinghold {
+    margin: 30px 0 0;
+}
+.wt-userlistingcontent {
+    overflow: hidden;
+}
+.wt-contenthead {
+    float: left;
+    width: auto;
+    max-width: 420px;
+}
+.wt-title {
+    float: left;
+    width: 100%;
+}
+.wt-contenthead .wt-title a {
+    display: block;
+    color: #323232;
+    margin: 0 0 9px;
+    font: 400 14px/16px 'Poppins', Arial, Helvetica, sans-serif;
+}
+.wt-contenthead .wt-title a i {
+    color: #00cc8d;
+}
+a {
+    text-decoration: none;
+}
+.wt-contenthead .wt-title h2 {
+    margin: 0;
+    font-weight: 400;
+    margin: 0 0 16px;
+    font-size: 18px;
+    line-height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.wt-title h2 {
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 45px;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    color: #323232;
+    margin: 0 0 8px;
+    font-weight: 700;
+    line-height: 1.5;
+    font-style: normal;
+    text-transform: capitalize;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+.wt-description {
+    width: 100%;
+    float: left;
+}
+.wt-userlistinghold .wt-description p {
+    font-size: 14px;
+    line-height: 24px;
+}
+p {
+    margin: 0 0 20px;
+    line-height: 20px;
+    letter-spacing: normal;
+}
+.wt-userlistinghold .wt-widgettag a {
+    margin: 3px;
+    font-size: 12px;
+    line-height: 28px;
+}
+.wt-widgettag a {
+    float: left;
+    margin: 5px;
+    padding: 0 18px;
+    color: #767676;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+}
+.wt-viewjobholder {
+    top: 0;
+    right: 0;
+    width: 255px;
+    height: 100%;
+    position: absolute;
+    background: #fff;
+    border-left: 1px solid #ddd;
+}
+.wt-viewjobholder ul {
+    float: left;
+    width: 100%;
+    padding: 30px;
+    list-style: none;
+    line-height: 16px;
+}
+.wt-viewjobholder ul li {
+    float: left;
+    width: 100%;
+    line-height: inherit;
+    list-style-type: none;
+}
+
+
+.wt-viewjobholder ul li span {
+    display: block;
+    color: #323232;
+    font-size: 14px;
+}
+.wt-viewjobholder ul li a i, .wt-viewjobholder ul li span i {
+    font-size: 13px;
+    width: 30px;
+}
+.wt-viewjobdollar {
+    color: #00cc8d;
+}
+.wt-viewjobholder ul li + li {
+    margin-top: 12px;
+}
+.wt-viewjobholder ul li span em {
+    width: 30px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+.wt-viewjobfolder {
+    color: #3498db;
+}
+.wt-viewjobholder ul li.wt-btnarea .wt-btn {
+    line-height: 36px;
+    width: 100%;
+}
+.wt-btn:hover, .wt-dropdowarrow, .navbar-toggle, .wt-btn, .wt-navigationarea .wt-navigation > ul > li > a:after, .wt-searchbtn, .wt-sectiontitle:after, .wt-navarticletab li a:after, .wt-pagination ul li a:hover, .wt-pagination ul li.wt-active a, .wt-widgettag a:hover, .wt-articlesingle-content .wt-description blockquote span i, .wt-searchgbtn, .wt-filtertagclear a, .ui-slider-horizontal .ui-slider-range, .wt-btnsearch, .wt-newnoti a em, .wt-notificationicon > a:after, .wt-rightarea .wt-nav .navbar-toggler, .wt-usersidebaricon span, .wt-usersidebaricon span i, .wt-filtertag .wt-filtertagclear a, .loader:before, .wt-offersmessages .wt-ad:after, .wt-btnsendmsg, .wt-tabstitle li a:before, .wt-tabscontenttitle:before, .wt-tablecategories thead tr th:first-child:before, .wt-tablecategories tbody tr td:first-child:before, .wt-slidernav .wt-prev:hover, .wt-slidernav .wt-next:hover {
+    background: #ff5851;
+}
+.wt-btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 0 50px;
+    background: #ff5851;
+    position: relative;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font: 700 13px/50px 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+/* .browse_job-right{
+    overflow: scroll;
+    height: 100vh;
+} */
+ 
