@@ -282,7 +282,14 @@ const hendlePostJob = () =>{
                   <label for="job_category">Job category</label><br>
                   <select class="custom-select w-100 p-3" id="job_category" name="category" style="color: #444; border-color: #ece4e4;" required>
                       <option selected>Choose a category...</option>
-                      <option value="1">check</option>
+                      <option value="1">Programming & Tech</option>
+                      <option value="2">Writing & Translation</option>
+                      <option value="3">Digital Marketing</option>
+                      <option value="4">Video & Animation</option>
+                      <option value="5">AI Services</option>
+                      <option value="6">Music & Audio</option>
+                      <option value="7">Business</option>
+                      <option value="8">Consulting</option>
                       <!-- Add more options as needed -->
                   </select>
                 </div>
