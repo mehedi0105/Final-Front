@@ -770,7 +770,22 @@ const getIdSendTittle2 = (id) =>{
     })
 }
 
+const hanldeActions = (job)=>{
+let vat = false;
+return fetch("https://final-s1v0.onrender.com/seller/project_requirment/")
+  .then((res)=>res.json())
+  .then((data)=>{
 
+    data.forEach(element => {
+      if (element.job === job) {
+        vat = true; 
+      }
+      
+    });
+    console.log("vat",vat)
+    return vat;
+  })
+}
 
 
 const handleManageTasks= () =>{
@@ -811,7 +826,7 @@ const handleManageTasks= () =>{
                         {
                           data.forEach(async(element) => {
                               let buttonHTML = '';
-                              
+                              let actions = await hanldeActions(element.job);
                               
                               if (element.is_accepted) {
                                   buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
@@ -831,10 +846,10 @@ const handleManageTasks= () =>{
                               const tr = document.createElement("tr");
                               const username = localStorage.getItem("username");
                               const company_name = await getIdSendUsername(company);
-                              
+                              const hanldeAction = await hanldeActions(element.job);
 
                               tr.innerHTML = `
-            
+                              
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="ms-3">
@@ -843,7 +858,7 @@ const handleManageTasks= () =>{
                                   </div>
                                 </td>
                                 <td>
-                                  <p class="fw-normal mb-1">${company_name} It Limited</p>
+                                  <p class="fw-normal mb-1">${company_name}</p>
                                   <p class="text-muted mb-0">IT department</p>
                                 </td>
                                 <td>
@@ -853,26 +868,24 @@ const handleManageTasks= () =>{
                                 </td>
                                 <td>${type}</td>
                                 <td>
-                                  ${buttonHTML}
-
+                                ${buttonHTML}
                                 </td>
                             
                               `
-                            test.appendChild(tr);
-            }
-
-            
-          });
-        
-        }
-        else{
-          test.innerHTML = `
-          <p class="text-center">Data Not Found</p>
-          `
-        }
+                              test.appendChild(tr);
+                              }
+                              
+                            });
+                          
+                          }
+                          else{
+                            test.innerHTML = `
+                            <p class="text-center">Data Not Found</p>
+                            `
+                          }
                         
-  })
-}
+                        })
+                  }
 
           
 
