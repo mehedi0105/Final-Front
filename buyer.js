@@ -850,7 +850,7 @@ const handleManageTasks= () =>{
           
 
                     const tr = document.createElement("tr");
-                    console.log(tr)
+                   
                     const username = localStorage.getItem("username");
                     const company_name = await getIdSendUsername(element.seller);
 

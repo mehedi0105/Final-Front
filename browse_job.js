@@ -127,7 +127,7 @@ const handleCategorySlugPost =  (slug) =>{
                                 <li><span><i class="far fa-folder wt-viewjobfolder"></i>Type: ${element.type}</span></li>
                                 <li><span><i class="far fa-clock wt-viewjobclock"></i>Duration: 03 Months</span></li>
                                 <li><span><i class="fa fa-tag wt-viewjobtag"></i>Job ID: ${element.id}</span></li>
-                                <li class="wt-btnarea"><a href="userlisting.html" class="wt-btn">View Job</a></li>
+                                <li class="wt-btnarea"><a href="job_details.html" class="wt-btn">View Job</a></li>
                             </ul>
                         </div>
                     </div>
@@ -212,7 +212,7 @@ const handleBudgetSearch = (event) =>{
                                 <li><span><i class="far fa-folder wt-viewjobfolder"></i>Type: ${element.type}</span></li>
                                 <li><span><i class="far fa-clock wt-viewjobclock"></i>Duration: 03 Months</span></li>
                                 <li><span><i class="fa fa-tag wt-viewjobtag"></i>Job ID: ${element.id}</span></li>
-                                <li class="wt-btnarea"><a href="userlisting.html" class="wt-btn">View Job</a></li>
+                                <li class="wt-btnarea"><a href="#" onclick = "handleSingleJobPost(${element.id})" class="wt-btn">View Job</a></li>
                             </ul>
                         </div>
                     </div>
