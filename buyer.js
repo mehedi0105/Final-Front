@@ -790,33 +790,32 @@ return fetch("https://final-s1v0.onrender.com/seller/project_requirment/")
 
 const handleManageTasks= () =>{
   const user_id = localStorage.getItem("user_id");
-  console.log(user_id);
+  console.log(user_id)
   const parent = document.getElementById("seller-dashboard-right");
-
-
   if (parent.innerHTML !== "") {
       parent.innerHTML = "";
-  }
-
-
+    }
   parent.innerHTML = `
-      <div class="my-bid-tops">
-          <div class="my-bid-tops-tittle">
-              <h2 class="">Manage Tasks</h2>
-          </div>
-          <table class="table align-middle mb-0 bg-white">
-              <thead class="bg-light">
-                  <tr>
-                      <th>Job Title</th>
-                      <th>Seller</th>
-                      <th>Location</th>
-                      <th>Type</th>
-                      <th>Actions</th>
-                  </tr>
-              </thead>
-              <tbody id="test"></tbody>
-          </table>
-      </div>`;
+  <div class="my-bid-tops">
+    <div class="my-bid-tops-tittle">
+      <h2 class="">Manage Tasks</h2>
+    </div>
+  <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+          <tr>
+            <th>Job Tittle</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Type</th>
+            <th>Actions</th>
+         
+          </tr>
+        </thead>
+        <tbody id="test">
+          
+        </tbody>
+      </table>
+  </div>`
       const test = document.getElementById("test");
 
                     
