@@ -849,43 +849,45 @@ const handleManageTasks= () =>{
                               const hanldeAction = await hanldeActions(element.job);
 
                               tr.innerHTML = `
-                              
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <div class="ms-3">
-                                      <p class=" mb-1">${title}</p>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td>
-                                  <p class="fw-normal mb-1">${company_name}</p>
-                                  <p class="text-muted mb-0">IT department</p>
-                                </td>
-                                <td>
-                                  <p class="badge badge-success fw-normal rounded-pill d-inline " style="color:#444; font-size:16px;" 
-                                    >${location}</p
-                                  >
-                                </td>
-                                <td>${type}</td>
-                                <td>
-                                ${buttonHTML}
-                                </td>
-                            
-                              `
-                              test.appendChild(tr);
-                              }
-                              
-                            });
-                          
-                          }
-                          else{
-                            test.innerHTML = `
-                            <p class="text-center">Data Not Found</p>
-                            `
-                          }
+            
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="ms-3">
+                    <p class=" mb-1">${title}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p class="fw-normal mb-1">${company_name} It Limited</p>
+                <p class="text-muted mb-0">IT department</p>
+              </td>
+              <td>
+                <p class="badge badge-success fw-normal rounded-pill d-inline " style="color:#444; font-size:16px;" 
+                  >${location}</p
+                >
+              </td>
+              <td>${type}</td>
+              <td>
+                ${buttonHTML}
+
+              </td>
+           
+            `
+            test.appendChild(tr);
+            }
+
+            
+          });
+        
+        }
+        else{
+          test.innerHTML = `
+          <p class="text-center">Data Not Found</p>
+          `
+        }
                         
-                        })
-                  }
+  })
+}
 
           
 
