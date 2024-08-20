@@ -520,3 +520,14 @@ a.button.centered {
 .footer-title{
     color: white;
 }
+
+.small-footer {
+    width: 100%;
+    text-align: center;
+    /* padding: 20px 35px; */
+    margin-top: 0;
+    padding: 25px 0;
+    border-top: 1px solid #333;
+    background-color: #282828;
+    color: rgb(190, 186, 186);
+}

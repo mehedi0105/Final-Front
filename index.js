@@ -1,18 +1,3 @@
-
-const getIdSendUsername = (id) =>{
-    return fetch(`https://final-s1v0.onrender.com/getUserName/${id}/`)
-         .then((res)=>res.json())
-         .then((data)=>{
-             return data.username;
-         })
- }
- const getIdSendCategoryname = (id) =>{
-     return fetch(`https://final-s1v0.onrender.com/buyer/categoriy/${id}/`)
-             .then((res)=>res.json())
-             .then((data)=>{
-                return data.cat_name;
-             })
- }
 const handleJob = () =>{
      
          fetch("https://final-s1v0.onrender.com/buyer/postJob/")
@@ -34,7 +19,7 @@ const handleJob = () =>{
                      );
              
                      const tagsHTML = tagsHTMLArray.join('');
-                     // console.log(company_name);
+
                      li.classList.add("job-listing", "grid", "post-2490", "job_listing", "type-job_listing", "status-publish", "hentry", "job_listing_region-new-york","job_listing_category-healthcare", "job_listing_type-full-time", "job_listing_tag-healthcare", "job-type-full-time");
                      li.innerHTML = `
                      
@@ -102,3 +87,16 @@ const handleSingleJobPost = (pk) =>{
     window.location.href ="job_details.html";
 }
 handleJob()
+
+const howItworks = () =>{
+
+  const user_type = localStorage.getItem("user_type");
+    if(!user_type){
+      notifyLogin()
+    }else if(user_type === "seller"){
+      notifyhowItworks()
+    }
+    else{
+      window.location.href = "./buyerDashbord.html";
+    }
+}

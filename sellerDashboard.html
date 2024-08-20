@@ -13,18 +13,18 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="dashbord.css" />
 
     <!-- Custom link File(end) -->
 
     <style>
-      .navbar-expand-lg .navbar-nav .dropdown-menu {
-        margin-right: 0%;
-        padding: 15px 23px !important;
-    }
-    </style>
+      .navbar-expand-lg .navbar-nav .d-flex ul {
+       margin-right: 0% !important;
+       padding: 15px 23px;
+   }
+   </style>
   </head>
   <body>
     <header>
@@ -125,7 +125,7 @@
             <div class="modal-body">
               <div class="d-flex mb-3">
               </div>
-              <form id="submit-proposal" onsubmit="handleSubmitRequirment()">
+              <form id="submit-proposal" onsubmit="handleSubmitRequirment(event)">
                 <div class="mb-3">
                   <textarea class="form-control" id="cover-latter" rows="5" name="cover-latter" placeholder="Your project letter/message sent to the employer"></textarea>
                 </div>
@@ -146,10 +146,12 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./app.js"></script>
     <script src="./auth.js"></script>
     <script src="./seller.js"></script>
+    <script src="./common.js"></script>
+    <script src="./notify.js"></script>
 
     <!-- Custom Script File(start) -->
   </body>

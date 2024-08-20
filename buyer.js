@@ -1,33 +1,34 @@
 
 const check = (val)=>{
+  let vat= false;
+  let test = 0;
   return fetch("https://final-s1v0.onrender.com/seller/apply_job/")
                   .then((res)=>res.json())
                   .then((array)=>{
                     array.forEach(apply => {
+                      console.log(apply.job," t",val)
                       if(val==apply.job){
                         if(apply.is_accepted == true)
-                            return true;
+                            vat = true;
+                          test++;
                       }
                     });
-                    return false;
+                    return test;
                   })
 }
 const handleCompletedCount = () =>{
-  let vat = 0;
+  let value = 0;
   const id = localStorage.getItem("user_id");
   return fetch("https://final-s1v0.onrender.com/buyer/postJob/")
           .then((res)=>res.json())
           .then((data)=>{
             data.forEach(async(element) => {
               if(element.company==id){
-
-                const value = await check(element.id)
-                if(value==true){
-                  vat++;
-                }
+                 value = await check(element.id)
               }
             });
-            return vat;
+
+            return value;
           })
 }
 const handlePostCount = () =>{
@@ -48,10 +49,12 @@ const handlePostCount = () =>{
 const handlePendingCount = () =>{
   let vat = 0;
   const id = localStorage.getItem("user_id");
+  console.log(id)
   return fetch("https://final-s1v0.onrender.com/seller/project_requirment/")
           .then((res)=>res.json())
           .then((data)=>{
             data.forEach(element => {
+              console.log(element.buyer)
               if(element.buyer==id){
                  vat++;
               }
@@ -131,7 +134,7 @@ const handleDasboard =async() =>{
 
 }
 
-// handleDasboard()
+
 const handleRecentActevity = () =>{
   const user_id = localStorage.getItem("user_id")
   const parent = document.getElementById("my-bid-tops");
@@ -140,25 +143,26 @@ const handleRecentActevity = () =>{
       parent.innerHTML = "";
     }
   parent.innerHTML = `
-  <div class="my-bid-tops">
-    <div class="my-bid-tops-tittle">
-      <h2 class="">Manage Tasks</h2>
+    <div class="my-bid-tops">
+      <div class="my-bid-tops-tittle">
+        <h2 class="">Manage Tasks</h2>
+      </div>
+    <table class="table align-middle mb-0 bg-white">
+          <thead class="bg-light">
+            <tr>
+              <th>Job Tittle</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="test">
+            
+          </tbody>
+        </table>
     </div>
-  <table class="table align-middle mb-0 bg-white">
-        <thead class="bg-light">
-          <tr>
-            <th>Job Tittle</th>
-            <th>Company</th>
-            <th>Location</th>
-            <th>Type</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="test">
-          
-        </tbody>
-      </table>
-  </div>`
+  `
   const test = document.getElementById("test");
     fetch("https://final-s1v0.onrender.com/seller/apply_job/")
       .then((res)=>res.json())
@@ -168,11 +172,9 @@ const handleRecentActevity = () =>{
           data.forEach(async(element) => {
             console.log(element.seller)
             if(element.seller == user_id){
-              // alert()
-            // console.log(element.cover_letter)
             const tr = document.createElement("tr");
             const username = localStorage.getItem("username");
-            const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
+            const{ salary, title, location , type,company} = await getIdSendTittle2(element.job);
             const company_name = await getIdSendUsername(company);
             const hanldeAction = await hanldeActions(element.job);
             tr.innerHTML = `
@@ -201,11 +203,7 @@ const handleRecentActevity = () =>{
                   ? `<button type="button" onclick="SaveSubmitRequirmentData('${element.id}')" class="btn text-white" style="background-color: #26ae61; padding: 15px">Accept Work</button>`
                   : `<button type="button" class="btn btn-link btn-sm btn-rounded" style="text-decoration: none;">Pending Response</button>`
                 )
-              }
-              
-
-              
-                
+              } 
               </td>
            
             `
@@ -224,7 +222,7 @@ const handleRecentActevity = () =>{
       })
 }
 
-// handleDasboard()
+
 const hendlePostJob = () =>{
     const parent = document.getElementById("seller-dashboard-right");
     if (parent.innerHTML !== "") {
@@ -282,21 +280,22 @@ const hendlePostJob = () =>{
                   <label for="job_category">Job category</label><br>
                   <select class="custom-select w-100 p-3" id="job_category" name="category" style="color: #444; border-color: #ece4e4;" required>
                       <option selected>Choose a category...</option>
-                      <option value="1">Programming & Tech</option>
-                      <option value="2">Writing & Translation</option>
-                      <option value="3">Digital Marketing</option>
-                      <option value="4">Video & Animation</option>
-                      <option value="5">AI Services</option>
-                      <option value="6">Music & Audio</option>
-                      <option value="7">Business</option>
-                      <option value="8">Consulting</option>
+                      <option value="2">Programming & Tech</option>
+                      <option value="3">Graphics & Design</option>
+                      <option value="4">Digital Marketing</option>
+                      <option value="5">Writing & Translation</option>
+                      <option value="6">Video & Animation</option>
+                      <option value="7">AI Services</option>
+                      <option value="8">Music & Audio</option>
+                      <option value="9">Business</option>
+                      <option value="10">Consulting</option>
                       <!-- Add more options as needed -->
                   </select>
                 </div>
 
                 <div class="form-group" style="width: 100%;">
                   <label for="Salary">Salary</label><br>
-                  <input type="number" step="0.3" class="form-control p-3" id="Salary" name="salary" placeholder="Enter expected Salary" required>
+                  <input type="number" step="0.01" class="form-control p-3" id="Salary" name="salary" placeholder="Enter expected Salary" required>
                 </div>
 
                 <div class="form-group" style="width: 100%;">
@@ -320,7 +319,6 @@ const handleProfile = () =>{
   fetch(`https://final-s1v0.onrender.com/getUserName/${user_id}/`)
     .then((res)=>res.json())
     .then((data)=>{
-      // console.log(data.first_name,' ',data.last_name)
       parent.innerHTML = `
       
         <div class="dashboard-headline">
@@ -513,8 +511,10 @@ const handlePost = (event) =>{
     body: JSON.stringify(PostJobFormData),
  })
   .then((res)=>res.json())
-  .then((data)=>{
-    alert("Job Post Added Successfully");
+  .then(async(data)=>{
+
+    notifyPostJob();
+
   })
   .catch(error => console.error("Error:", error));
 
@@ -538,43 +538,45 @@ const HanldeMyJob = () =>{
 
 
   parent.innerHTML = `
-  <div
-      class="dashboard-content-container"
-      data-simplebar=""
-      style="height: 750px"
-    >
-  <div class="my-bid-tops">
-    <div class="my-bid-tops-tittle">
-      <h2 class="">Manage Tasks</h2>
-    </div>
-  <table class="table align-middle mb-0 bg-white">
-        <thead class="bg-light">
-          <tr>
-            <th>Job Tittle</th>
-            <th>Company</th>
-            <th>Location</th>
-            <th>Type</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="test">
-          
-        </tbody>
-      </table>
-  </div>
-    </div>
+    <div
+        class="dashboard-content-container"
+        data-simplebar=""
+        style="height: 750px"
+      >
+      <div class="my-bid-tops">
+        <div class="my-bid-tops-tittle">
+          <h2 class="">Manage Job</h2>
+        </div>
+        <table class="table align-middle mb-0 bg-white">
+          <thead class="bg-light">
+            <tr>
+              <th>Job Tittle</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="test">
+            
+          </tbody>
+        </table>
+     </div>
+   </div>
   `
   const test = document.getElementById("test");
   const user_id = localStorage.getItem("user_id");
-  console.log(test)
+
   fetch("https://final-s1v0.onrender.com/buyer/postJob/")
-    .then((res)=>res.json())
-    .then((data)=>{
-      data.forEach(async(element) => {
-        if(element.company == user_id){
+  .then((res)=>res.json())
+  .then((data)=>{
+    data.forEach(async(element) => {
+
+      if(String(element.company) == user_id){
+
           const tr = document.createElement("tr");
             const username = localStorage.getItem("username");
-            const{ salary, title, location , type,company} = await getIdSendTittle(element.id);
+            const{ title,location , type,salary,description,company,category} = await getIdSendTittle2(element.id);
             const company_name = await getIdSendUsername(company);
             const hanldeAction = await hanldeActions(element.id);
             tr.innerHTML = `
@@ -597,9 +599,10 @@ const HanldeMyJob = () =>{
               </td>
               <td>${type}</td>
               <td>
-              <button class="btn btn-warning" onclick="handleSingleJobPost(${element.id})">view job</button>
+              <button class="btn btn-warning" onclick="handleSingleJobPost(${element.id})">View</button>
+              <button class="btn btn-success" onclick="hanleUpdateJobForm(${element.id})">Edit</button>
+              <button class="btn btn-danger" onclick="handleDeletePost(${element.id})">Delete</button>
               
-                
               </td>
            
             `
@@ -610,16 +613,159 @@ const HanldeMyJob = () =>{
     })
 }
 
-const getIdSendTittle = (id) =>{
+
+const hanleUpdateJobForm = async(id)=>{
+  console.log("update",id)
+  const{ title,location , type,salary,description,company,category} = await getIdSendTittle2(id);
+  const category_string = await getIdSendCategoryname(category);
+  const parent = document.getElementById("seller-dashboard-right");
+    if (parent.innerHTML !== "") {
+        parent.innerHTML = "";
+      }
+
+      parent.innerHTML = `
+        <div class="dashboard-headline">
+            <h2 style="font-size: 26px">Update Job Details</h2>
+          </div>
+          <div class="dashboard-list-box job-fields-submit-form no-company-yet">
+            <div class="post-job-box pb-4">
+              <div class="headline">
+                <h3>
+                  <i class="fa-solid fa-folder-plus"></i> Job Update Form
+                </h3>
+              </div>
+
+              <div id="success-massage">
+              </div>
+
+              <div class="job-submit-page">
+                <!-- Job Information Fields -->
+                <form id="update-post-form" onsubmit="handleUpdateJob(event,${id})">
+
+                <div class="form-group">
+                  <label for="jobTitle" class="form-label">Job Title</label>
+                  <input type="text" class="form-control p-3" id="jobTitle" name="tittle" value="${title}">
+                </div>
+                
+
+                <div class="d-flex flex-wrap gap-2">
+                  <div class="form-group " style="width: 48%;">
+                    <label for="job-type">job-type</label><br>
+                    <select class="custom-select w-100 p-3" id="job-type" name="type" style="color: #444; border-color: #ece4e4;">
+                        <option value="${type}" selected>${type}</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Full-Time">Full-Time</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                  </div>
+  
+                  <div class="form-group" style="width: 48%; margin-left:3% ">
+                    <label for="job_location">location</label><br>
+                    <select class="custom-select w-100 p-3" id="job_location" name="location" style="color: #444; border-color: #ece4e4;">
+                        <option value="${location}" selected>${location}</option>
+                        <option value="Work-From-home">Work-From-home</option>
+                        <option value="Remote">Remote</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" style="width: 100%;">
+                  <label for="job_category">Job category</label><br>
+                  <select class="custom-select w-100 p-3" id="job_category" name="category" style="color: #444; border-color: #ece4e4;">
+                      <option value ="${category}"  selected>${category_string}</option>
+                      <option value="2">Programming & Tech</option>
+                      <option value="3">Graphics & Design</option>
+                      <option value="4">Digital Marketing</option>
+                      <option value="5">Writing & Translation</option>
+                      <option value="6">Video & Animation</option>
+                      <option value="7">AI Services</option>
+                      <option value="8">Music & Audio</option>
+                      <option value="9">Business</option>
+                      <option value="10">Consulting</option>
+                      <!-- Add more options as needed -->
+                  </select>
+                </div>
+
+                <div class="form-group" style="width: 100%;">
+                  <label for="Salary">Salary</label><br>
+                  <input type="number" step="0.01" class="form-control p-3" id="Salary" name="salary"  value="${salary}">
+                </div>
+
+                <div class="form-group" style="width: 100%;">
+                  <label for="description">Description</label><br>
+                  <textarea class="form-control p-3" id="description" name="description" rows="4"
+                    name="description">${description}</textarea>
+                </div>
+                
+                <button type="submit" class="mt-3 post-btn p-3">Update job</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      `
+}
+
+
+const handleUpdateJob =(event,id)=>{
+  event.preventDefault()
+  const form = document.getElementById("update-post-form");
+  const form_data = new FormData(form);
+
+  const company = localStorage.getItem("user_id");
+  const token = localStorage.getItem("token");
+
+  const UpdateData = {
+    tittle : form_data.get("tittle"),
+    location : form_data.get("location"),
+    type : form_data.get("type"),
+    salary : form_data.get("salary"),
+    description : form_data.get("description"),
+    company : parseInt(company,10),
+    category : [parseInt(form_data.get("category"),10)],
+  }
+
+  console.log(UpdateData)
+
+  fetch(`https://final-s1v0.onrender.com/seller/jobDetails/${id}/`,{
+    method : "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization : `Token ${token}`
+    },
+    body: JSON.stringify(UpdateData),
+  })
+    .then((res)=>res.json())
+    .then((data)=>{
+     UpdateJobNotify()
+    })
+}
+
+const handleDeletePost =(id)=>{
+  fetch(`https://final-s1v0.onrender.com/seller/jobDetails/${id}/`,{
+    method:"Delete",
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then((data)=>{
+      notifyJobDelete("jobs deleted SuccessFull")
+      window.location.reload();
+    })
+}
+
+const getIdSendTittle2 = (id) =>{
   return fetch(`https://final-s1v0.onrender.com/seller/jobDetails/${id}/`)
     .then((res) => res.json())
     .then((data) => {
       return {
-        salary: data.salary,
         title: data.tittle,  
         location: data.location, 
         type: data.type, 
-        company: data.company 
+        salary: data.salary,
+        description: data.description,
+        company: data.company ,
+        category: data.category ,
     };
     })
 }
@@ -629,70 +775,81 @@ let vat = false;
 return fetch("https://final-s1v0.onrender.com/seller/project_requirment/")
   .then((res)=>res.json())
   .then((data)=>{
+
     data.forEach(element => {
       if (element.job === job) {
         vat = true; 
-
       }
       
     });
+    console.log("vat",vat)
     return vat;
   })
 }
 
-const getIdSendUsername = (id) =>{
-  return fetch(`https://final-s1v0.onrender.com/getUserName/${id}/`)
-       .then((res)=>res.json())
-       .then((data)=>{
-           return data.username;
-       });
-}
 
 const handleManageTasks= () =>{
   const user_id = localStorage.getItem("user_id");
   console.log(user_id)
-  let bids = localStorage.getItem("bids");
   const parent = document.getElementById("seller-dashboard-right");
   if (parent.innerHTML !== "") {
-      parent.innerHTML = "";
-    }
+    parent.innerHTML = "";
+  }
   parent.innerHTML = `
   <div class="my-bid-tops">
     <div class="my-bid-tops-tittle">
-      <h2 class="">Manage Tasks</h2>
+    <h2 class="">Manage Tasks</h2>
     </div>
-  <table class="table align-middle mb-0 bg-white">
-        <thead class="bg-light">
+    <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
           <tr>
-            <th>Job Tittle</th>
-            <th>Company</th>
+          <th>Job Tittle</th>
+            <th>Seller</th>
             <th>Location</th>
             <th>Type</th>
             <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="test">
+            </tr>
+            </thead>
+            <tbody id="test">
+            
+            </tbody>
+            </table>
+            </div>`
+            const test = document.getElementById("test");
+
+            fetch("https://final-s1v0.onrender.com/seller/apply_job/")
+            .then((res)=>res.json())
+            .then((data)=>{
+              if(data.length > 0)
+                {
+                  data.forEach(async(element) => {
+                    let buttonHTML = '';
+                    let actions = await hanldeActions(element.job);
+                    
+                    if (element.is_accepted) {
+                        buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
+                    } else if (element.submit_reqirment && element.submit_project === false) {
+                      buttonHTML = `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Wait Seller Response</button>`;
+                    } else if (element.submit_project) {
+                      buttonHTML = `<button type="button" onclick="SaveReveiwData('${element.job}','${element.id}', '${element.seller}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">View and review the project</button>`;
+         
+                    } else {
+                      console.log("actions", actions);
+                        buttonHTML = `<button type="button" onclick="SaveApplyData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px">View Proposal</button>`;
+                    }
+
+
+
+
+                    const{ title,location , type,salary,description,company,category} = await getIdSendTittle2(element.job);
+                    console.log(company,"p",user_id)
+                    if(String(company) == user_id){
           
-        </tbody>
-      </table>
-  </div>`
-  const test = document.getElementById("test");
-    fetch("https://final-s1v0.onrender.com/seller/apply_job/")
-      .then((res)=>res.json())
-      .then((data)=>{
-        if(data.length > 0)
-        {
-          data.forEach(async(element) => {
-            console.log(element.seller)
-            if(element.seller == user_id){
-              // alert()
-            bids++;
-            // console.log(element.cover_letter)
-            const tr = document.createElement("tr");
-            const username = localStorage.getItem("username");
-            const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
-            const company_name = await getIdSendUsername(company);
-            const hanldeAction = await hanldeActions(element.job);
+                    const tr = document.createElement("tr");
+                    console.log(tr)
+                    const username = localStorage.getItem("username");
+                    const company_name = await getIdSendUsername(element.seller);
+
             tr.innerHTML = `
             
               <td>
@@ -703,7 +860,7 @@ const handleManageTasks= () =>{
                 </div>
               </td>
               <td>
-                <p class="fw-normal mb-1">${company_name} It Limited</p>
+                <p class="fw-normal mb-1">${company_name}</p>
                 <p class="text-muted mb-0">IT department</p>
               </td>
               <td>
@@ -713,23 +870,12 @@ const handleManageTasks= () =>{
               </td>
               <td>${type}</td>
               <td>
-              ${element.is_accepted === true 
-                ? `<button type="button" onclick ="SaveReveiwData('${element.job}','${element.seller}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Leave a reveiw</button>`
-                : (hanldeAction === true 
-                  ? `<button type="button" onclick="SaveSubmitRequirmentData('${element.id}')" class="btn text-white" style="background-color: #26ae61; padding: 15px">Accept Work</button>`
-                  : `<button type="button" class="btn btn-link btn-sm btn-rounded" style="text-decoration: none;">Pending Response</button>`
-                )
-              }
-              
-
-              
-                
+              ${buttonHTML}
               </td>
            
             `
             test.appendChild(tr);
             }
-            localStorage.setItem("bids",bids);
             
           });
         
@@ -743,16 +889,21 @@ const handleManageTasks= () =>{
       })
 }
 
+const SaveApplyData =(id)=>{
+  localStorage.setItem("apply_id",id);
+  window.location.href = "./veiw_proposal.html"
+}
 const SaveSubmitRequirmentData = (cover_id)=>{
   localStorage.setItem("cover_id",cover_id);
-  // console.log(cover_letter);
+
   window.location.href = `https://final-s1v0.onrender.com/buyer/accept_work/${cover_id}/`;
 }
-// handleMyBids()
 
-const SaveReveiwData = (job, seller)=>{
-// console.log("job",job," ",seller)
+
+const SaveReveiwData = (job,id, seller)=>{
+
 localStorage.setItem("reveiw-job",job);
+localStorage.setItem("reveiw-id",id);
 localStorage.setItem("reveiw-seller",seller);
 }
 
@@ -762,6 +913,7 @@ const handleSubmitReveiw = (event) =>{
   const form_data = new FormData(form);
 
   const job = localStorage.getItem("reveiw-job");
+  const reveiw = localStorage.getItem("reveiw-id");
   const seller = localStorage.getItem("reveiw-seller");
 
   const ReveiwFormData = {
@@ -771,7 +923,7 @@ const handleSubmitReveiw = (event) =>{
     reveiw_text : form_data.get("cover-latter")
   }
 
-  console.log(ReveiwFormData)
+
 
   fetch("https://final-s1v0.onrender.com/buyer/reviw/",{
     method: "POST",
@@ -782,6 +934,7 @@ const handleSubmitReveiw = (event) =>{
   })
     .then((res)=>res.json())
     .then((data)=>{
-      alert("Reveiw Send SuccessFull")
+      Reviewnotify()
+      window.location.href = `https://final-s1v0.onrender.com/seller/is_accepted/${reveiw}`;
     })
 }

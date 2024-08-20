@@ -124,7 +124,6 @@ const handleProfile = () =>{
     fetch(`https://final-s1v0.onrender.com/getUserName/${user_id}/`)
       .then((res)=>res.json())
       .then((data)=>{
-        // console.log(data.first_name,' ',data.last_name)
         parent.innerHTML = `
         
           <div class="dashboard-headline">
@@ -246,16 +245,16 @@ const handleProfile = () =>{
       })
   }
 
-const getIdSendTittle = (id) =>{
+const getIdSendTittleOne = (id) =>{
     return fetch(`https://final-s1v0.onrender.com/seller/jobDetails/${id}/`)
       .then((res) => res.json())
       .then((data) => {
         return {
           salary: data.salary,
-          title: data.tittle,  // Assuming there's a title field in the data
-          location: data.location, // Assuming there's a location field in the data
-          type: data.type, // Assuming there's a location field in the data
-          company: data.company // Assuming there's a location field in the data
+          title: data.tittle,  
+          location: data.location, 
+          type: data.type, 
+          company: data.company 
       };
       })
   }
@@ -267,7 +266,7 @@ const hanldeActions = (job)=>{
     .then((data)=>{
       data.forEach(element => {
         if (element.job === job) {
-          vat = true; // Job found, set vat to true
+          vat = true; 
 
         }
         
@@ -276,13 +275,6 @@ const hanldeActions = (job)=>{
     })
 }
 
-const getIdSendUsername = (id) =>{
-    return fetch(`https://final-s1v0.onrender.com/getUserName/${id}/`)
-         .then((res)=>res.json())
-         .then((data)=>{
-             return data.username;
-         });
- }
 
 const handleMyBids = () =>{
     const user_id = localStorage.getItem("user_id");
@@ -294,7 +286,7 @@ const handleMyBids = () =>{
     parent.innerHTML = `
     <div class="my-bid-tops">
       <div class="my-bid-tops-tittle">
-        <h2 class="">my bids</h2>
+        <h2 class="">My bids</h2>
       </div>
     <table class="table align-middle mb-0 bg-white">
           <thead class="bg-light">
@@ -319,11 +311,11 @@ const handleMyBids = () =>{
           {
             data.forEach(async(element) => {
               if(element.seller == user_id){
-              bids++;
-              // console.log(element.cover_letter)
+             
+                
               const tr = document.createElement("tr");
               const username = localStorage.getItem("username");
-              const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
+              const{ salary, title, location , type,company} = await getIdSendTittleOne(element.job);
               const company_name = await getIdSendUsername(company);
               const hanldeAction = await hanldeActions(element.job);
               tr.innerHTML = `
@@ -346,14 +338,7 @@ const handleMyBids = () =>{
                 </td>
                 <td>${type}</td>
                 <td>
-                ${element.submit_reqirment === true 
-                  ? `<button type="button" class="btn btn-sm btn-rounded btn-success" style="text-decoration: none;">Submited project</button>` 
-                  : (hanldeAction === true 
-                    ? `<button type="button" onclick="SaveSubmitRequirmentData('${element.id}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Offer</button>`
-                    : `<button type="button" class="btn btn-link btn-sm btn-rounded" style="text-decoration: none;">Pending Response</button>`
-                  )
-                }
-                
+              
 
                 
                   
@@ -362,7 +347,6 @@ const handleMyBids = () =>{
               `
               test.appendChild(tr);
               }
-              localStorage.setItem("bids",bids);
               
             });
           
@@ -379,17 +363,48 @@ const handleMyBids = () =>{
 handleDasboard()
 
 const SaveSubmitRequirmentData = (cover_id)=>{
-  localStorage.setItem("cover_id",cover_id);
-  // console.log(cover_letter);
-}
-
-const handleSubmitRequirment = () =>{
-const cover_id = localStorage.getItem("cover_id");
-window.location.href = `https://final-s1v0.onrender.com/seller/user_requirment1/${cover_id}/`
+  localStorage.setItem("submit_id",cover_id);
   
 }
 
+const handleSubmitRequirment = async(event) =>{
+  event.preventDefault();
+  const cover_id = localStorage.getItem("submit_id");
+  const token = localStorage.getItem("token");
+  const {cover_letter, submit_reqirment, submit_project, is_accepted, reveiw, created_at, job, seller} = await viewSingleProposal(cover_id);
+  const UpdateForm = {
+      cover_letter :cover_letter,
+      submit_reqirment : submit_reqirment,
+      submit_project : true,
+      is_accepted : is_accepted,
+      reveiw : reveiw,
+      created_at : created_at,
+      job : job,
+      seller:seller
+  };
+  
+  console.log(UpdateForm)
+
+  fetch(`https://final-s1v0.onrender.com/seller/apply_job/${cover_id}/`,{
+      method : 'PUT',
+      headers: {
+      "Content-Type": "application/json",
+      Authorization : `Token ${token}`
+      },
+      body: JSON.stringify(UpdateForm),
+  })
+      .then((res)=>res.json())
+      .then(async(data)=>{
+          await Requirmentnotify()
+          window.location.href = './sellerDashboard.html'
+      })
+  
+}
+
+
+
 const handleManageTasks= () =>{
+
   const user_id = localStorage.getItem("user_id");
   console.log(user_id)
   const parent = document.getElementById("seller-dashboard-right");
@@ -408,6 +423,7 @@ const handleManageTasks= () =>{
             <th>Company</th>
             <th>Location</th>
             <th>Type</th>
+            <th>Actions</th>
          
           </tr>
         </thead>
@@ -423,13 +439,27 @@ const handleManageTasks= () =>{
         if(data.length > 0)
         {
           data.forEach(async(element) => {
+            let buttonHTML = '';
+                let actions = await hanldeActions(element.job);
+                
+                if (element.is_accepted) {
+                    buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
+                } else if (element.submit_reqirment && element.submit_project == false) {
+                  buttonHTML = `<button type="button" onclick="SaveSubmitRequirmentData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Job</button>`;
+                } else if (element.submit_project === true ) {
+                  buttonHTML = `<button type="button" onclick="SaveReveiwData('${element.job}', '${element.seller}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Submited project</button>`;
+                   
+                } else {
+                
+                    buttonHTML = `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Pending Response</button>`;
+                }
+       
             console.log(element.seller)
             if(element.seller == user_id){
-              // alert()
-            // console.log(element.cover_letter)
+            
             const tr = document.createElement("tr");
             const username = localStorage.getItem("username");
-            const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
+            const{ salary, title, location , type,company} = await getIdSendTittleOne(element.job);
             const company_name = await getIdSendUsername(company);
             const hanldeAction = await hanldeActions(element.job);
             tr.innerHTML = `
@@ -452,11 +482,8 @@ const handleManageTasks= () =>{
               </td>
               <td>${type}</td>
               <td>
-              
-              
+                ${buttonHTML}
 
-              
-                
               </td>
            
             `

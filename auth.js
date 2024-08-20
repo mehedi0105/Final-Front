@@ -1,4 +1,4 @@
-const handleRegistration = (event) => {
+const handleRegistration = async(event) => {
   event.preventDefault();
   const form = document.getElementById("registration-form");
   const form_data = new FormData(form);
@@ -8,63 +8,35 @@ const handleRegistration = (event) => {
   password = form_data.get("password");
   confirm_password = form_data.get("confirmpassword");
 
-  // Check if password and confirm password match
   if (password !== confirm_password) {
-    const parent = document.getElementById("eorror");
-
-    if (parent.innerHTML !== "") {
-      parent.innerHTML = "";
-    }
-    const div = document.createElement("div");
-    div.classList.add("m-auto", "p-3");
-    div.innerHTML = `
-        <p class="text-danger">Passwords do not match. Please try again.</p>
-        `;
-    parent.appendChild(div);
-
+    await notifyPassword("pass");
     return;
   }
 
   // check username and email
+  let check = "1";
   fetch("https://final-s1v0.onrender.com//GetAllUser/")
     .then((res) => res.json())
-    .then((array) => {
-      array.forEach((element) => {
-        if (element.username == username) {
-          const parent = document.getElementById("eorror");
-
-          if (parent.innerHTML !== "") {
-            parent.innerHTML = "";
-          }
-          const div = document.createElement("div");
-          div.classList.add("m-auto", "p-3");
-          div.innerHTML = `
-                    <p class="text-danger">this username already exits pleace use diffarent email adress.</p>
-                    `;
-          parent.appendChild(div);
-
-          return;
+    .then(async(array) => {
+      array.forEach(async(element) => {
+        console.log(element.username," ",username)
+        // console.log(username)
+        if ((element.username) == username) {
+          await notifyPassword("user");
+          check ="2";
         }
         if (element.email == email) {
-          const parent = document.getElementById("eorror");
+          await notifyPassword("email");
+          check ="2";
 
-          if (parent.innerHTML !== "") {
-            parent.innerHTML = "";
-          }
-          const div = document.createElement("div");
-          div.classList.add("m-auto", "p-3");
-          div.innerHTML = `
-                    <p class="text-danger">this email already exits pleace use diffarent email adress.</p>
-                    `;
-          parent.appendChild(div);
-
-          return;
         }
       });
     });
-
-  // console.log(form_data);
-  const registrationFormData = {
+console.log(check)
+localStorage.setItem("check",check)
+  if(check === "1")
+  {
+    const registrationFormData = {
     username: form_data.get("username"),
     first_name: form_data.get("first_name"),
     last_name: form_data.get("last_name"),
@@ -74,7 +46,6 @@ const handleRegistration = (event) => {
     confirm_password: form_data.get("confirmpassword"),
   };
 
-  console.log(registrationFormData);
 
   fetch("https://final-s1v0.onrender.com/register/", {
     method: "POST",
@@ -84,10 +55,9 @@ const handleRegistration = (event) => {
     body: JSON.stringify(registrationFormData),
   })
     .then((res) => res.json())
-    .then((data) => {
-      alert("chek your main and confirm email link")
-      console.log("Redirecting to login...");
-      window.location.href = "login.html";
+    .then(async(data) => {
+      await notifyRegister ()
+      window.location.href = "./login.html";
     })
     .catch((error) => {
       error.json().then((errorMessage) => {
@@ -97,6 +67,7 @@ const handleRegistration = (event) => {
         );
       });
     });
+  }
 };
 
 const handleLogin = (event) => {
@@ -129,16 +100,16 @@ const handleLogin = (event) => {
 
         fetch(`https://final-s1v0.onrender.com/Getdetails/${username}/`)
           .then((res) => res.json())
-          .then((user) => {
+          .then(async(user) => {
             localStorage.setItem("username", username);
             localStorage.setItem("user_type", user.account_type);
             localStorage.setItem("user_id", user.id);
-  
+            await notifyLogin()
             console.log(user.account_type)
             if (user.account_type === "buyer") {
-              window.location.href = 'buyerDashbord.html';
+              window.location.href = './buyerDashbord.html';
             } else {
-              window.location.href = 'sellerDashboard.html';
+              window.location.href = './browse_job.html';
             }
           })
           .catch((error) => console.error("Error:", error));
@@ -157,15 +128,15 @@ const handleLogout = () => {
       Authorization :`Token ${token}`,
     },
   })
-    .then((res)=>{
+    .then(async(res)=>{
       if(res.ok){
         localStorage.removeItem("token");
         localStorage.removeItem("username")
         localStorage.removeItem("user_type");
         localStorage.removeItem("user_id");
-        localStorage.removeItem("bids");
-
-        window.location.href = "./login.html";
+        
+       await notifyLogin()
+        window.location.href = "./index.html";
       }
     })
     .catch((error) => console.error(error));

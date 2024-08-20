@@ -45,11 +45,10 @@
     border: none;
     font-weight: 500;
 }
-.my-bid-tops-tittle{
-        display: block;
-        position: relative;
-        padding-bottom: 35px;
-    
+.my-bid-tops-tittle {
+  display: block;
+  position: relative;
+  padding-bottom: 12px;
 }
 .my-bid-tops-tittle h2{
         font-size: 26px;
@@ -84,7 +83,7 @@
   .dashboard-headline {
     display: block;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
   }
   .dashboard-headline h1,
   .dashboard-headline h3 {

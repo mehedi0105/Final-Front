@@ -1,36 +1,21 @@
-const getIdSendUsername = (id) =>{
-    return fetch(`https://final-s1v0.onrender.com/getUserName/${id}/`)
-         .then((res)=>res.json())
-         .then((data)=>{
-             return data.username;
-         });
- }
-
-const getIdSendTittle = (id) =>{
-    return fetch(`https://final-s1v0.onrender.com/seller/jobDetails/${id}/`)
-      .then((res) => res.json())
-      .then((data) => {
-          return data.tittle;
-      })
-  }
 
 window.onload = () =>{
     const id = localStorage.getItem('apply_id');
-    // const id = localStorage.getItem('job_id');
     const parent = document.getElementById("job_main");
     const token = localStorage.getItem("token");
     if (parent.innerHTML !== "") {
         parent.innerHTML = "";
     }
-
+    
     fetch(`https://final-s1v0.onrender.com/seller/apply_job/`)
     .then((res) => res.json())
     .then(async (data) => {
-     {
-         
-         data.forEach(async(element) => {
-            console.log(element.id,"  ",id)
-             if(String(element.id) === id){
+        {
+            
+            data.forEach(async(element) => {
+                console.log(element.id,"  ",id)
+                if(String(element.id) == id){
+
                 const company_name = await getIdSendUsername(element.seller);
                 const tittle = await getIdSendTittle(element.job);
                 const div = document.createElement("div");
@@ -56,7 +41,7 @@ window.onload = () =>{
                                 </div>
                             </div>
                             <div>
-                              <button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Crate Offer</button>
+                              <button type="button" class="btn text-white" onclick = "SaveData(${element.id})" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
                             </div>
                         </div>
                     </div>
@@ -76,7 +61,8 @@ window.onload = () =>{
                                             <span class="text-muted" style="margin-left: 46px;">${tittle.slice(0,40)}.....</span>
                                         </li>
                                     </ul>
-                                    <button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px; display:block;width: 100%;" data-bs-toggle="modal" data-bs-target="#applyModal">Crate Offer</button>
+                                    <button type="button" class="btn text-white" onclick = "SaveData(${element.id})" style="background-color: #26ae61; padding: 15px; width: 48%;" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
+                                    <button type="button" class="btn text-white" style="background-color: red; padding: 15px;width: 48%;" onclick="handleRejectProposal(${element.id})">Reject Proposal</button>
                                 </div>
                             </div>
                         </div>
@@ -91,91 +77,55 @@ window.onload = () =>{
     });
 }
 
-const handleApplyJob =async (event) =>{
-    event.preventDefault();
-    const seller = localStorage.getItem("user_id");
-    const job_id = localStorage.getItem("job_id");
-    // const title = await getIdSendTittle(job_id);
-    console.log(seller," ",job_id," ",title);
-    const form = document.getElementById("submit-proposal");
-    const form_data = new FormData(form);
-
-    const JobApplyForm = {
-      "cover_letter": form_data.get("cover-latter"),
-      "submit_reqirment": false,
-      "is_accepted": false,
-      "job": job_id,
-      "seller": seller,
-    };
-    console.log(JobApplyForm);
-
-    fetch("https://final-s1v0.onrender.com/seller/apply_job/", {
-        method: "POST",
+const handleRejectProposal = (id) =>{
+    fetch(`https://final-s1v0.onrender.com/seller/ProposalDelete/${id}/`,{
+        method:"Delete",
         headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(JobApplyForm),
-    }
-    )
-        .then((res) => res.json())
-        .then((data) => {
-            alert("Your Proposal Submited Successfuly");
-            // window.location.href = "./browse_job.html"
+          'Content-Type': 'application/json',
+        }
+      })
+        .then((data)=>{
+          notifyJobDelete("jobs deleted SuccessFull")
+          window.location.href="./buyerDashbord.html";
         })
-        .catch((error) => {
-            console.error(error);
-        });
+}
 
-  }
+const SaveData = (id) =>{
+    
+    localStorage.setItem("ssss",id);
+}
 
-const viewProposal = (id) =>{
-    const parent = document.getElementById("proposal-list");
-    if(parent){
-      if (parent.innerHTML !== "") {
-              parent.innerHTML = "";
-          }
-        console.log(id)
-      fetch("https://final-s1v0.onrender.com/seller/apply_job/")
+
+const UpdateApplyjobOne = async()=>{
+    const cover_id = localStorage.getItem("ssss");
+    const token = localStorage.getItem("token");
+    const {cover_letter, submit_reqirment, submit_project, is_accepted, reveiw, created_at, job, seller} = await viewSingleProposal(cover_id);
+    const UpdateForm = {
+        cover_letter :cover_letter,
+        submit_reqirment : true,
+        submit_project : submit_project,
+        is_accepted : is_accepted,
+        reveiw : reveiw,
+        created_at : created_at,
+        job : job,
+        seller:seller
+    };
+    
+    console.log(UpdateForm)
+
+    fetch(`https://final-s1v0.onrender.com/seller/apply_job/${cover_id}/`,{
+        method : 'PUT',
+        headers: {
+        "Content-Type": "application/json",
+        Authorization : `Token ${token}`
+        },
+        body: JSON.stringify(UpdateForm),
+    })
         .then((res)=>res.json())
         .then((data)=>{
-          data.forEach(async(element) => {
-            console.log("job",element.job)
-            if(element.job == String(id)){
-              const company_name = await getIdSendUsername(element.seller);
-              const div = document.createElement("div");
-              div.innerHTML = `
-              <ul class="dashboard-box-list" style="cursor:pointer;">
-                  <div class="my-bid-bottoms">
-                    <div class="card mb-3 job-card" style="border-left: 5px solid #FFDD57;     background-color: rgba(80, 80, 80,0.05)">
-                      <div class="card-body d-flex justify-content-between align-items-center">
-                          <div class="d-flex">
-                              <img src="https://workscout.in/wp-content/uploads/job-manager-uploads/company_logo/2021/11/company-logo-03-150x150.png" alt="King Logo" class="me-3" style="height: 60px;">
-                              <div style="padding-left: 25px;">
-                                  <h5 class="card-title">${company_name} </h5>
-                                  <p class="card-text d-flex gap-2" style="color: #808080;">
-                                      <small class="text-muted">Company: ${element.cover_letter.slice(0,100)}........</small><br>
-                                      
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="d-flex flex-column text-end">
-                              <span class="badge bg-primary mb-1">View Proposal</span>
-                          </div>
-                      </div>
-                  </div>
-                  </div>
-                </ul>
-              `
-              parent.appendChild(div);
-            }
-          });
-          if (parent.innerHTML === "") {
-              alert("Data Not Found")
-          }
-
+            Requirmentnotify()
         })
-    }
-  }
+}
 
 const handleProjectRequ = (event) =>{
     event.preventDefault();
@@ -184,6 +134,7 @@ const handleProjectRequ = (event) =>{
     const buyer = localStorage.getItem("user_id");
     const form_data = new FormData(form);
 
+    
     const Requirment = {
         "requirment": form_data.get("cover-latter"),
         "job": job,
@@ -200,9 +151,9 @@ const handleProjectRequ = (event) =>{
         body: JSON.stringify(Requirment),
     })
         .then((res)=>res.json())
-        .then((data)=>{
-            alert("Success Fully Send Offer")
-            window.location.href = './buyerDashbord.html';
+        .then(async(data)=>{
+            await UpdateApplyjobOne()
+            window.location.href = "./buyerDashbord.html"
         })
         .catch((error)=>{
             console.log(error);

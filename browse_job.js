@@ -7,8 +7,7 @@ const handleCategory = () =>{
                 const parent = document.getElementById("category-view");
                 const div = document.createElement("div");
                 div.innerHTML = `
-                <span class="wt-checkbox">
-                    <input id="${element.slug}" type="checkbox" name="description" value="company" >
+                <span class="wt-checkbox">  
                     <label onclick="handleCategorySlugPost('${element.slug}')"> ${element.cat_name}</label>
                 </span>
                 `
@@ -17,30 +16,8 @@ const handleCategory = () =>{
         })
 }
 
-
-
 handleCategory();
 
-
-// handleCategory();
-
-const getIdSendUsername = (id) =>{
-   return fetch(`https://final-s1v0.onrender.com/getUserName/${id}/`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            // console.log(data.username);
-            return data.username;
-        })
-}
-
-
-const getIdSendCategoryname = (id) =>{
-    return fetch(`https://final-s1v0.onrender.com/buyer/categoriy/${id}/`)
-            .then((res)=>res.json())
-            .then((data)=>{
-               return data.cat_name;
-            })
-}
 
 const handleAllPost = () =>{
     fetch("https://final-s1v0.onrender.com/buyer/postJob/")
@@ -51,7 +28,6 @@ const handleAllPost = () =>{
                 const div = document.createElement("div");
                 const company_name = await getIdSendUsername(element.company);
 
-                // const tagsHTML =  element.category.map(async(test) => `<a href="#" style="text-decoration:none;">${await getIdSendCategoryname(test)}</a>`).join('');
                 const tagsHTMLArray = await Promise.all(
                     element.category.map(async (test) => {
                         const categoryName = await getIdSendCategoryname(test);
@@ -60,7 +36,7 @@ const handleAllPost = () =>{
                 );
         
                 const tagsHTML = tagsHTMLArray.join('');
-                // console.log(company_name);
+
                 div.classList.add("wt-userlistinghold", "wt-featured", "wt-userlistingholdvtwo");
                 div.innerHTML = `
                 
@@ -186,7 +162,7 @@ const handleBudgetSearch = (event) =>{
     const min_value = parseFloat(form_data.get("mimimum-budget"));
     const max_value = parseFloat(form_data.get("maximum-budget"));
 
-    // console.log(min_value, " ", max_value)
+
     fetch("https://final-s1v0.onrender.com/buyer/postJob/")
         .then((res)=>res.json())
         .then((data)=>{
@@ -201,7 +177,7 @@ const handleBudgetSearch = (event) =>{
                 if (parent.innerHTML !== "") {
                     parent.innerHTML = "";
                   }
-                // const tagsHTML =  element.category.map(async(test) => `<a href="#" style="text-decoration:none;">${await getIdSendCategoryname(test)}</a>`).join('');
+
                 const tagsHTMLArray = await Promise.all(
                     element.category.map(async (test) => {
                         const categoryName = await getIdSendCategoryname(test);
@@ -210,7 +186,7 @@ const handleBudgetSearch = (event) =>{
                 );
         
                 const tagsHTML = tagsHTMLArray.join('');
-                // console.log(company_name);
+
                 div.classList.add("wt-userlistinghold", "wt-featured", "wt-userlistingholdvtwo");
                 div.innerHTML = `
                 
