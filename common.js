@@ -1,6 +1,6 @@
 const handleLogo = () =>{
     const user_type = localStorage.getItem("user_type");
-    if(user_type === "" || user_type === "seller"){
+    if(!user_type|| user_type === "seller"){
         window.location.href = "./index.html";
     }
 }
