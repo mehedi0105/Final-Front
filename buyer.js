@@ -840,7 +840,7 @@ const handleManageTasks= () =>{
                                   buttonHTML = `<button type="button" onclick="SaveApplyData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px">View Proposal</button>`;
                               }
                               console.log(element.seller)
-                              const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
+                              const{ title, location , type,salary,company,description,category} = await getIdSendTittle2(element.job);
                               if(String(company) == user_id){
                               
                               const tr = document.createElement("tr");
@@ -887,7 +887,7 @@ const handleManageTasks= () =>{
                         })
                   }
 
-          
+     
 
 const SaveApplyData =(id)=>{
   localStorage.setItem("apply_id",id);
