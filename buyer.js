@@ -845,11 +845,33 @@ const handleManageTasks= () =>{
                     console.log(company,"p",user_id)
                     if(String(company) == user_id){
           
+<<<<<<< HEAD
                     const tr = document.createElement("tr");
                     console.log(tr)
                     const username = localStorage.getItem("username");
                     const company_name = await getIdSendUsername(element.seller);
 
+=======
+        </tbody>
+      </table>
+  </div>`
+  const test = document.getElementById("test");
+    fetch("https://final-s1v0.onrender.com/seller/apply_job/")
+      .then((res)=>res.json())
+      .then((data)=>{
+        if(data.length > 0)
+        {
+          data.forEach(async(element) => {
+            console.log(element.seller)
+            const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
+            if(String(company) == user_id){
+            
+            // console.log(element.cover_letter)
+            const tr = document.createElement("tr");
+            const username = localStorage.getItem("username");
+            const company_name = await getIdSendUsername(company);
+            const hanldeAction = await hanldeActions(element.job);
+>>>>>>> a7d496e735e3870198fd59210fa1582d0b39891a
             tr.innerHTML = `
             
               <td>
