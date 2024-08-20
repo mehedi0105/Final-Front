@@ -819,50 +819,27 @@ const handleManageTasks= () =>{
       </div>`;
       const test = document.getElementById("test");
 
-      fetch("https://final-s1v0.onrender.com/seller/apply_job/")
-          .then((res)=>res.json())
-          .then((data)=>{
-            if(data.length > 0)
-                {
-                  data.forEach(async(element) => {
-                    let buttonHTML = '';
-                    let actions = await hanldeActions(element.job);
                     
-                    if (element.is_accepted) {
-                        buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
-                    } else if (element.submit_reqirment && element.submit_project === false) {
-                      buttonHTML = `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Wait Seller Response</button>`;
-                    } else if (element.submit_project) {
-                      buttonHTML = `<button type="button" onclick="SaveReveiwData('${element.job}','${element.id}', '${element.seller}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">View and review the project</button>`;
-         
-                    } else {
-                      console.log("actions", actions);
-                        buttonHTML = `<button type="button" onclick="SaveApplyData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px">View Proposal</button>`;
-                    }
-                    
-
-
-
-
-                    const{ title,location , type,salary,description,company,category} = await getIdSendTittle2(element.job);
-                    console.log(company,"p",user_id)
-                    if(String(company) == user_id){
-          
-
-                    const tr = document.createElement("tr");
+                    fetch("https://final-s1v0.onrender.com/seller/apply_job/")
+                    .then((res)=>res.json())
+                    .then((data)=>{
+                      if(data.length > 0)
+                        {
+                          data.forEach(async(element) => {
+                              let buttonHTML = '';
+                              let actions = await hanldeActions(element.job);
+                              
+                              if (element.is_accepted) {
+                                  buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
+                              } else if (element.submit_reqirment && element.submit_project === false) {
+                                buttonHTML = `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Wait Seller Response</button>`;
+                              } else if (element.submit_project) {
+                                buttonHTML = `<button type="button" onclick="SaveReveiwData('${element.job}','${element.id}', '${element.seller}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">View and review the project</button>`;
                    
-                    const username = localStorage.getItem("username");
-                    const company_name = await getIdSendUsername(element.seller);
-
-
-
-                    const test = document.getElementById("test");
-                      fetch("https://final-s1v0.onrender.com/seller/apply_job/")
-                        .then((res)=>res.json())
-                        .then((data)=>{
-                          if(data.length > 0)
-                          {
-                            data.forEach(async(element) => {
+                              } else {
+                                console.log("actions", actions);
+                                  buttonHTML = `<button type="button" onclick="SaveApplyData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px">View Proposal</button>`;
+                              }
                               console.log(element.seller)
                               const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
                               if(String(company) == user_id){
@@ -910,10 +887,7 @@ const handleManageTasks= () =>{
                         
                         })
                   }
-                })
-            }
-          })
-}
+
           
 
 const SaveApplyData =(id)=>{
