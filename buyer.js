@@ -770,22 +770,7 @@ const getIdSendTittle2 = (id) =>{
     })
 }
 
-const hanldeActions = (job)=>{
-let vat = false;
-return fetch("https://final-s1v0.onrender.com/seller/project_requirment/")
-  .then((res)=>res.json())
-  .then((data)=>{
 
-    data.forEach(element => {
-      if (element.job === job) {
-        vat = true; 
-      }
-      
-    });
-    console.log("vat",vat)
-    return vat;
-  })
-}
 
 
 const handleManageTasks= () =>{
@@ -826,7 +811,7 @@ const handleManageTasks= () =>{
                         {
                           data.forEach(async(element) => {
                               let buttonHTML = '';
-                              let actions = await hanldeActions(element.job);
+                              
                               
                               if (element.is_accepted) {
                                   buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
@@ -846,34 +831,34 @@ const handleManageTasks= () =>{
                               const tr = document.createElement("tr");
                               const username = localStorage.getItem("username");
                               const company_name = await getIdSendUsername(company);
-                              const hanldeAction = await hanldeActions(element.job);
+                              
 
                               tr.innerHTML = `
             
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="ms-3">
-                    <p class=" mb-1">${title}</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="fw-normal mb-1">${company_name} It Limited</p>
-                <p class="text-muted mb-0">IT department</p>
-              </td>
-              <td>
-                <p class="badge badge-success fw-normal rounded-pill d-inline " style="color:#444; font-size:16px;" 
-                  >${location}</p
-                >
-              </td>
-              <td>${type}</td>
-              <td>
-                ${buttonHTML}
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class=" mb-1">${title}</p>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <p class="fw-normal mb-1">${company_name} It Limited</p>
+                                  <p class="text-muted mb-0">IT department</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success fw-normal rounded-pill d-inline " style="color:#444; font-size:16px;" 
+                                    >${location}</p
+                                  >
+                                </td>
+                                <td>${type}</td>
+                                <td>
+                                  ${buttonHTML}
 
-              </td>
-           
-            `
-            test.appendChild(tr);
+                                </td>
+                            
+                              `
+                            test.appendChild(tr);
             }
 
             
