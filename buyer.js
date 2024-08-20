@@ -790,37 +790,39 @@ return fetch("https://final-s1v0.onrender.com/seller/project_requirment/")
 
 const handleManageTasks= () =>{
   const user_id = localStorage.getItem("user_id");
-  console.log(user_id)
+  console.log(user_id);
   const parent = document.getElementById("seller-dashboard-right");
-  if (parent.innerHTML !== "") {
-    parent.innerHTML = "";
-  }
-  parent.innerHTML = `
-  <div class="my-bid-tops">
-    <div class="my-bid-tops-tittle">
-    <h2 class="">Manage Tasks</h2>
-    </div>
-    <table class="table align-middle mb-0 bg-white">
-    <thead class="bg-light">
-          <tr>
-          <th>Job Tittle</th>
-            <th>Seller</th>
-            <th>Location</th>
-            <th>Type</th>
-            <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody id="test">
-            
-            </tbody>
-            </table>
-            </div>`
-            const test = document.getElementById("test");
 
-            fetch("https://final-s1v0.onrender.com/seller/apply_job/")
-            .then((res)=>res.json())
-            .then((data)=>{
-              if(data.length > 0)
+
+  if (parent.innerHTML !== "") {
+      parent.innerHTML = "";
+  }
+
+
+  parent.innerHTML = `
+      <div class="my-bid-tops">
+          <div class="my-bid-tops-tittle">
+              <h2 class="">Manage Tasks</h2>
+          </div>
+          <table class="table align-middle mb-0 bg-white">
+              <thead class="bg-light">
+                  <tr>
+                      <th>Job Title</th>
+                      <th>Seller</th>
+                      <th>Location</th>
+                      <th>Type</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody id="test"></tbody>
+          </table>
+      </div>`;
+      const test = document.getElementById("test");
+
+      fetch("https://final-s1v0.onrender.com/seller/apply_job/")
+          .then((res)=>res.json())
+          .then((data)=>{
+            if(data.length > 0)
                 {
                   data.forEach(async(element) => {
                     let buttonHTML = '';
@@ -837,6 +839,7 @@ const handleManageTasks= () =>{
                       console.log("actions", actions);
                         buttonHTML = `<button type="button" onclick="SaveApplyData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px">View Proposal</button>`;
                     }
+                    
 
 
 
@@ -845,71 +848,73 @@ const handleManageTasks= () =>{
                     console.log(company,"p",user_id)
                     if(String(company) == user_id){
           
-<<<<<<< HEAD
+
                     const tr = document.createElement("tr");
                     console.log(tr)
                     const username = localStorage.getItem("username");
                     const company_name = await getIdSendUsername(element.seller);
 
-=======
-        </tbody>
-      </table>
-  </div>`
-  const test = document.getElementById("test");
-    fetch("https://final-s1v0.onrender.com/seller/apply_job/")
-      .then((res)=>res.json())
-      .then((data)=>{
-        if(data.length > 0)
-        {
-          data.forEach(async(element) => {
-            console.log(element.seller)
-            const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
-            if(String(company) == user_id){
-            
-            // console.log(element.cover_letter)
-            const tr = document.createElement("tr");
-            const username = localStorage.getItem("username");
-            const company_name = await getIdSendUsername(company);
-            const hanldeAction = await hanldeActions(element.job);
->>>>>>> a7d496e735e3870198fd59210fa1582d0b39891a
-            tr.innerHTML = `
-            
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="ms-3">
-                    <p class=" mb-1">${title}</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="fw-normal mb-1">${company_name}</p>
-                <p class="text-muted mb-0">IT department</p>
-              </td>
-              <td>
-                <p class="badge badge-success fw-normal rounded-pill d-inline " style="color:#444; font-size:16px;" 
-                  >${location}</p
-                >
-              </td>
-              <td>${type}</td>
-              <td>
-              ${buttonHTML}
-              </td>
-           
-            `
-            test.appendChild(tr);
+
+
+                    const test = document.getElementById("test");
+                      fetch("https://final-s1v0.onrender.com/seller/apply_job/")
+                        .then((res)=>res.json())
+                        .then((data)=>{
+                          if(data.length > 0)
+                          {
+                            data.forEach(async(element) => {
+                              console.log(element.seller)
+                              const{ salary, title, location , type,company} = await getIdSendTittle(element.job);
+                              if(String(company) == user_id){
+                              
+                              const tr = document.createElement("tr");
+                              const username = localStorage.getItem("username");
+                              const company_name = await getIdSendUsername(company);
+                              const hanldeAction = await hanldeActions(element.job);
+
+                              tr.innerHTML = `
+                              
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class=" mb-1">${title}</p>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <p class="fw-normal mb-1">${company_name}</p>
+                                  <p class="text-muted mb-0">IT department</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success fw-normal rounded-pill d-inline " style="color:#444; font-size:16px;" 
+                                    >${location}</p
+                                  >
+                                </td>
+                                <td>${type}</td>
+                                <td>
+                                ${buttonHTML}
+                                </td>
+                            
+                              `
+                              test.appendChild(tr);
+                              }
+                              
+                            });
+                          
+                          }
+                          else{
+                            test.innerHTML = `
+                            <p class="text-center">Data Not Found</p>
+                            `
+                          }
+                        
+                        })
+                  }
+                })
             }
-            
-          });
-        
-        }
-        else{
-          test.innerHTML = `
-          <p class="text-center">Data Not Found</p>
-          `
-        }
-       
-      })
+          })
 }
+          
 
 const SaveApplyData =(id)=>{
   localStorage.setItem("apply_id",id);
@@ -958,5 +963,5 @@ const handleSubmitReveiw = (event) =>{
     .then((data)=>{
       Reviewnotify()
       window.location.href = `https://final-s1v0.onrender.com/seller/is_accepted/${reveiw}`;
-    })
+    });
 }
