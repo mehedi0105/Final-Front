@@ -266,6 +266,7 @@ label {
 }
 .wt-contenthead .wt-title a i {
     color: #00cc8d;
+    margin-right: 10px;
 }
 a {
     text-decoration: none;

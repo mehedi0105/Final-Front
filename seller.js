@@ -301,11 +301,11 @@ const handleMyBids = () =>{
     <table class="table align-middle mb-0 bg-white">
           <thead class="bg-light">
             <tr>
+              <th>Job Id</th>
               <th>Job Tittle</th>
               <th>Company</th>
               <th>Location</th>
               <th>Type</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="test">
@@ -330,6 +330,13 @@ const handleMyBids = () =>{
               const hanldeAction = await hanldeActions(element.job);
               tr.innerHTML = `
               
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                      <p class=" mb-1">${element.id}</p>
+                    </div>
+                  </div>
+                </td>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="ms-3">
@@ -372,45 +379,13 @@ const handleMyBids = () =>{
 
 handleDasboard()
 
-const SaveSubmitRequirmentData = (cover_id)=>{
-  localStorage.setItem("submit_id",cover_id);
-  
+
+
+const saveViewRequermentData = async(job,id) =>{
+  localStorage.setItem("view_Requ", job);
+  localStorage.setItem("view_Requ_id", id);
+  window.location.href = "./veiwRequirment.html"
 }
-
-const handleSubmitRequirment = async(event) =>{
-  event.preventDefault();
-  const cover_id = localStorage.getItem("submit_id");
-  const token = localStorage.getItem("token");
-  const {cover_letter, submit_reqirment, submit_project, is_accepted, reveiw, created_at, job, seller} = await viewSingleProposal(cover_id);
-  const UpdateForm = {
-      cover_letter :cover_letter,
-      submit_reqirment : submit_reqirment,
-      submit_project : true,
-      is_accepted : is_accepted,
-      reveiw : reveiw,
-      created_at : created_at,
-      job : job,
-      seller:seller
-  };
-  
-  console.log(UpdateForm)
-
-  fetch(`https://final-s1v0.onrender.com/seller/apply_job/${cover_id}/`,{
-      method : 'PUT',
-      headers: {
-      "Content-Type": "application/json",
-      Authorization : `Token ${token}`
-      },
-      body: JSON.stringify(UpdateForm),
-  })
-      .then((res)=>res.json())
-      .then(async(data)=>{
-          await Requirmentnotify()
-          window.location.href = './sellerDashboard.html'
-      })
-  
-}
-
 
 
 const handleManageTasks= () =>{
@@ -429,6 +404,7 @@ const handleManageTasks= () =>{
   <table class="table align-middle mb-0 bg-white">
         <thead class="bg-light">
           <tr>
+            <th>Created At</th>
             <th>Job Tittle</th>
             <th>Company</th>
             <th>Location</th>
@@ -455,7 +431,8 @@ const handleManageTasks= () =>{
                 if (element.is_accepted) {
                     buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
                 } else if (element.submit_reqirment && element.submit_project == false) {
-                  buttonHTML = `<button type="button" onclick="SaveSubmitRequirmentData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Job</button>`;
+                  // buttonHTML = `<button type="button" onclick="SaveSubmitRequirmentData(${element.id})" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">View Requrment</button>`;
+                  buttonHTML = `<button type="button" onclick="saveViewRequermentData('${element.job}','${element.id}')" class="btn text-white" style="background-color: #26ae61; padding: 15px">View Requrment</button>`;
                 } else if (element.submit_project === true ) {
                   buttonHTML = `<button type="button" onclick="SaveReveiwData('${element.job}', '${element.seller}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Submited project</button>`;
                    
@@ -474,6 +451,13 @@ const handleManageTasks= () =>{
             const hanldeAction = await hanldeActions(element.job);
             tr.innerHTML = `
             
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="ms-3">
+                    <p class=" mb-1">${element.created_at.slice(0,10)}</p>
+                  </div>
+                </div>
+              </td>
               <td>
                 <div class="d-flex align-items-center">
                   <div class="ms-3">

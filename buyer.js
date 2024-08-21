@@ -563,6 +563,7 @@ const HanldeMyJob = () =>{
         <table class="table align-middle mb-0 bg-white">
           <thead class="bg-light">
             <tr>
+              <th>Job Id</th>
               <th>Job Tittle</th>
               <th>Company</th>
               <th>Location</th>
@@ -594,6 +595,13 @@ const HanldeMyJob = () =>{
             const hanldeAction = await hanldeActions(element.id);
             tr.innerHTML = `
             
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="ms-3">
+                    <p class=" mb-1">${element.id}</p>
+                  </div>
+                </div>
+              </td>
               <td>
                 <div class="d-flex align-items-center">
                   <div class="ms-3">
@@ -818,8 +826,9 @@ const handleManageTasks= () =>{
   <table class="table align-middle mb-0 bg-white">
         <thead class="bg-light">
           <tr>
+            <th>Created At</th>
             <th>Job Tittle</th>
-            <th>Company</th>
+            <th>Seller</th>
             <th>Location</th>
             <th>Type</th>
             <th>Actions</th>
@@ -844,11 +853,30 @@ const handleManageTasks= () =>{
                               let actions = await hanldeActions(element.job);
                               
                               if (element.is_accepted) {
-                                  buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
+                                  buttonHTML += `
+                                  <div class="d-flex gap-2">
+                                  <button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>
+                                  <button type="button" onclick="SaveReveiwData('${element.job}','${element.id}','${element.seller}')" class="btn text-white bg-success" style="padding:15px;" data-bs-toggle="modal" data-bs-target="#applyModal">Write work Reveiw</button>
+                                  <div>
+                                  
+                                  `;
+                                  // buttonHTML = ``;
                               } else if (element.submit_reqirment && element.submit_project === false) {
                                 buttonHTML = `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Wait Seller Response</button>`;
                               } else if (element.submit_project) {
-                                buttonHTML = `<button type="button" onclick="SaveReveiwData('${element.job}','${element.id}', '${element.seller}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">View and review the project</button>`;
+                                if(element.is_accepted === false){
+                                  buttonHTML = `<button type="button" onclick="SaveViewDatasubmit('${element.job}', '${element.seller}','${element.id}')" class="btn text-white" style="background-color: #26ae61; padding: 15px" >View and review the project</button>`;
+                                }
+                                else if(element.is_accepted && element.reveiw === false){
+                                  buttonHTML = `<button type="button" onclick="" class="btn text-white" style="background-color: #26ae61; padding: 15px">View</button>
+                                  <button type="button bg-warning" onclick="" class="btn text-white"padding: 15px">Write wprk Reveiw</button>
+                                  `;
+                                  // buttonHTML = ``;
+                                }
+                                else{
+                                  buttonHTML += `<button type="button" class="btn text-white" style="background-color: #26ae61; padding: 15px">Completed</button>`;
+                                }
+                                
                    
                               } else {
                                 console.log("actions", actions);
@@ -857,14 +885,21 @@ const handleManageTasks= () =>{
                               console.log(element.seller)
                               const{ title, location , type,salary,company,description,category} = await getIdSendTittle2(element.job);
                               if(String(company) == user_id){
-                              
-                              const tr = document.createElement("tr");
-                              const username = localStorage.getItem("username");
-                              const company_name = await getIdSendUsername(company);
-                              const hanldeAction = await hanldeActions(element.job);
+                                
+                                const tr = document.createElement("tr");
+                                const username = localStorage.getItem("username");
+                                const seller = await getIdSendUsername(element.seller)
+                                const hanldeAction = await hanldeActions(element.job);
 
                               tr.innerHTML = `
                               
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class=" mb-1">${element.created_at.slice(0,10)}</p>
+                                    </div>
+                                  </div>
+                                </td>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="ms-3">
@@ -873,7 +908,7 @@ const handleManageTasks= () =>{
                                   </div>
                                 </td>
                                 <td>
-                                  <p class="fw-normal mb-1">${company_name}</p>
+                                  <p class="fw-normal mb-1">${seller}</p>
                                   <p class="text-muted mb-0">IT department</p>
                                 </td>
                                 <td>
@@ -920,6 +955,13 @@ const SaveReveiwData = (job,id, seller)=>{
 localStorage.setItem("reveiw-job",job);
 localStorage.setItem("reveiw-id",id);
 localStorage.setItem("reveiw-seller",seller);
+}
+
+const SaveViewDatasubmit = (job, seller,id) =>{
+  localStorage.setItem("submited_job",job)
+  localStorage.setItem("submited_seller",seller);
+  localStorage.setItem("submited_id",id);
+  window.location.href = './viewProject.html';
 }
 
 const handleSubmitReveiw = (event) =>{

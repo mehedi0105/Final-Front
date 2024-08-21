@@ -1,21 +1,23 @@
 
 window.onload = () =>{
-    const id = localStorage.getItem('apply_id');
+    const submited_job = localStorage.getItem('submited_job');
+    const submited_seller = localStorage.getItem('submited_seller');
     const parent = document.getElementById("job_main");
     const token = localStorage.getItem("token");
     if (parent.innerHTML !== "") {
         parent.innerHTML = "";
     }
     
-    fetch(`https://final-s1v0.onrender.com/seller/apply_job/`)
+    fetch(`https://final-s1v0.onrender.com/seller/submited_project/`)
     .then((res) => res.json())
     .then(async (data) => {
         {
-            
+            let cnt =0 ;
             data.forEach(async(element) => {
-                console.log(element.id,"  ",id)
-                if(String(element.id) == id){
-
+                // console.log(element.id,"  ",id)
+    const submited_seller = localStorage.getItem('submited_seller');
+    if(String(element.job) == submited_job && cnt === 0 && String(element.seller) === submited_seller){
+                    cnt++;
                 const company_name = await getIdSendUsername(element.seller);
                 const tittle = await getIdSendTittle(element.job);
                 const div = document.createElement("div");
@@ -41,7 +43,7 @@ window.onload = () =>{
                                 </div>
                             </div>
                             <div>
-                              <button type="button" class="btn text-white" onclick = "SaveData(${element.id})" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
+                              <button type="button" class="btn text-white" onclick="handleSubmitRequirment(event)" class="btn text-white" style="background-color: #26ae61; padding: 15px;" >Accept ProJect</button>
                             </div>
                         </div>
                     </div>
@@ -53,17 +55,16 @@ window.onload = () =>{
                         <div class="col-lg-12">
                             <div class="card" style="background: #fdfdfd;border: none;">
                                 <div class="card-body">
-                                    <h5 class="card-title">cover_letter Overview</h5>
+                                    <h5 class="card-title">Job Requirment Overview</h5>
                                     <ul class="list-unstyled job-overview">
                                         <li><i class="fas fa-briefcase job-overview-icon"></i> Job Title: <br>
                                             <span class="text-muted" style="margin-left: 46px;">${tittle}</span>
                                         </li>
-                                        <li><i class="fa-solid fa-envelope job-overview-icon"></i>Cover Letter: <br>
-                                        <p style="margin-left: 46px;" class="Description">${element.cover_letter}</p>
+                                        <li><i class="fa-solid fa-envelope job-overview-icon"></i>Project: <br>
+                                        <p style="margin-left: 46px;" class="Description">${element.project}</p>
                                         </li>
                                     </ul>
-                                    <button type="button" class="btn text-white" onclick = "SaveData(${element.id})" style="background-color: #26ae61; padding: 15px; width: 48%;" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
-                                    <button type="button" class="btn text-white" style="background-color: red; padding: 15px;width: 48%;" onclick="handleRejectProposal(${element.id})">Reject Proposal</button>
+                                    <button type="button" class="btn text-white w-100" onclick="handleSubmitRequirment(event)" class="btn text-white" style="background-color: #26ae61; padding: 15px;" >Accept ProJect</button>
                                 </div>
                             </div>
                         </div>
@@ -78,34 +79,19 @@ window.onload = () =>{
     });
 }
 
-const handleRejectProposal = (id) =>{
-    fetch(`https://final-s1v0.onrender.com/seller/ProposalDelete/${id}/`,{
-        method:"Delete",
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-        .then((data)=>{
-          notifyJobDelete("jobs deleted SuccessFull")
-          window.location.href="./buyerDashbord.html";
-        })
-}
-
-const SaveData = (id) =>{
-    
-    localStorage.setItem("ssss",id);
-}
 
 
-const UpdateApplyjobOne = async()=>{
-    const cover_id = localStorage.getItem("ssss");
+  
+  const handleSubmitRequirment = async(event) =>{
+    event.preventDefault();
+    const cover_id = localStorage.getItem("submited_id");
     const token = localStorage.getItem("token");
     const {cover_letter, submit_reqirment, submit_project, is_accepted, reveiw, created_at, job, seller} = await viewSingleProposal(cover_id);
     const UpdateForm = {
         cover_letter :cover_letter,
-        submit_reqirment : true,
-        submit_project : submit_project,
-        is_accepted : is_accepted,
+        submit_reqirment : submit_reqirment,
+        submit_project : submit_reqirment,
+        is_accepted : true,
         reveiw : reveiw,
         created_at : created_at,
         job : job,
@@ -113,50 +99,20 @@ const UpdateApplyjobOne = async()=>{
     };
     
     console.log(UpdateForm)
-
+    
     fetch(`https://final-s1v0.onrender.com/seller/apply_job/${cover_id}/`,{
         method : 'PUT',
         headers: {
-        "Content-Type": "application/json",
-        Authorization : `Token ${token}`
+            "Content-Type": "application/json",
+            Authorization : `Token ${token}`
         },
         body: JSON.stringify(UpdateForm),
     })
-        .then((res)=>res.json())
-        .then((data)=>{
-            Requirmentnotify()
+    .then((res)=>res.json())
+    .then(async(data)=>{
+            // alert()
+            await Requirmentnotify()
+            window.location.href = './buyerDashbord.html'
         })
-}
-
-const handleProjectRequ = (event) =>{
-    event.preventDefault();
-    const form = document.getElementById("submit-proposal");
-    const job = localStorage.getItem("job_id");
-    const buyer = localStorage.getItem("user_id");
-    const form_data = new FormData(form);
-
     
-    const Requirment = {
-        "requirment": form_data.get("cover-latter"),
-        "job": job,
-        "buyer": buyer
-    }
-
-    console.log(Requirment);
-
-    fetch("https://final-s1v0.onrender.com/seller/project_requirment/",{
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify(Requirment),
-    })
-        .then((res)=>res.json())
-        .then(async(data)=>{
-            await UpdateApplyjobOne()
-            window.location.href = "./buyerDashbord.html"
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-}
+  }
