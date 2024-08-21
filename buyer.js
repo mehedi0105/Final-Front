@@ -1,36 +1,47 @@
-
-const check = (val)=>{
-  let vat= false;
+const check = (val, term) => {
   let test = 0;
   return fetch("https://final-s1v0.onrender.com/seller/apply_job/")
-                  .then((res)=>res.json())
-                  .then((array)=>{
-                    array.forEach(apply => {
-                      console.log(apply.job," t",val)
-                      if(val==apply.job){
-                        if(apply.is_accepted == true)
-                            vat = true;
-                          test++;
-                      }
-                    });
-                    return test;
-                  })
+    .then((res) => res.json())
+    .then((array) => {
+      array.forEach((apply) => {
+        if (val === (apply.job)) {
+          if (term === "comp") {
+            if (apply.is_accepted === true && apply.submit_project === true) {
+              test++;
+            }
+          }
+          if (term === "active") {
+            if (apply.is_accepted === false && apply.submit_reqirment === true) {
+              test++;
+            }
+          }
+        }
+      });
+      return test;
+    });
 }
-const handleCompletedCount = () =>{
+
+
+const handleCompletedCount = (term) =>{
   let value = 0;
   const id = localStorage.getItem("user_id");
   return fetch("https://final-s1v0.onrender.com/buyer/postJob/")
-          .then((res)=>res.json())
-          .then((data)=>{
-            data.forEach(async(element) => {
-              if(element.company==id){
-                 value = await check(element.id)
-              }
-            });
+  .then((res)=>res.json())
+  .then(async(data)=>{
+    for (let element of data) {
 
-            return value;
-          })
+      if (String(element.company) === id) {
+        value += await check(element.id,term);
+      }
+    }
+    return value;
+  })
+    
 }
+
+
+
+
 const handlePostCount = () =>{
   let vat = 0;
   const id = localStorage.getItem("user_id");
@@ -67,8 +78,9 @@ const handleDasboard =async() =>{
 
     const username = localStorage.getItem("username");
     const totalTask =await handlePostCount()
-    const pendingTask =await handlePendingCount()
-    const comTask =await handleCompletedCount()
+    const pendingTask =await handleCompletedCount("active")
+    // const pendingTask = 0;
+    const comTask = await handleCompletedCount("comp")
 
     const parent = document.getElementById("seller-dashboard-right");
     if (parent.innerHTML !== "") {
@@ -513,7 +525,8 @@ const handlePost = (event) =>{
   .then((res)=>res.json())
   .then(async(data)=>{
 
-    notifyPostJob();
+    await notifyPostJob();
+    window.location.reload()
 
   })
   .catch(error => console.error("Error:", error));
@@ -736,8 +749,9 @@ const handleUpdateJob =(event,id)=>{
     body: JSON.stringify(UpdateData),
   })
     .then((res)=>res.json())
-    .then((data)=>{
-     UpdateJobNotify()
+    .then(async(data)=>{
+     await UpdateJobNotify()
+    window.location.reload()
     })
 }
 
@@ -782,10 +796,11 @@ return fetch("https://final-s1v0.onrender.com/seller/project_requirment/")
       }
       
     });
-    console.log("vat",vat)
+    // console.log("vat",vat)
     return vat;
   })
 }
+
 
 
 const handleManageTasks= () =>{

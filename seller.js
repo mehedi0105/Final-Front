@@ -13,20 +13,30 @@ const countMyApp = () =>{
           })
 }
 
-const countAccJob = () =>{
-  let cnt=0;
+
+const check = (term) => {
+  let test = 0;
   const user_id = localStorage.getItem("user_id");
   return fetch("https://final-s1v0.onrender.com/seller/apply_job/")
-          .then((res)=>res.json())
-          .then((data)=>{
-            data.forEach(element => {
-              if(String(element.seller) === user_id){
-                if(element.is_accepted === true)
-                  cnt++;
-              }
-            });
-            return cnt;
-          })
+    .then((res) => res.json())
+    .then((array) => {
+      array.forEach((apply) => {
+        if (user_id === String(apply.seller)) {
+
+          if (term === "comp") {
+            if (apply.is_accepted === true && apply.submit_project === true) {
+              test++;
+            }
+          }
+          if (term === "active") {
+            if (apply.is_accepted === false) {
+              test++;
+            }
+          }
+        }
+      });
+      return test;
+    });
 }
 
 const countViewJob = () =>{
@@ -49,8 +59,8 @@ const handleDasboard = async() =>{
 
     const username = localStorage.getItem("username");
     const bids = await countMyApp();
-    const comp = await countAccJob();
-    const view = await countViewJob();
+    const comp = await check("comp");
+    const view = await check("active");
 
     const parent = document.getElementById("seller-dashboard-right");
     if (parent.innerHTML !== "") {

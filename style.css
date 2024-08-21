@@ -4,7 +4,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-.navbar{
+.navbar {
     position: fixed;
     box-shadow: 0 0 18px 0 rgba(0,0,0,.12);
     font-size: 16px;
@@ -12,6 +12,7 @@
     background-color: #fff;
     padding: 0px;
     width: 100%;
+    z-index: 114;
 }
 
 

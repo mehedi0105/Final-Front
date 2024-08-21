@@ -3,6 +3,9 @@ const handleLogo = () =>{
     if(!user_type|| user_type === "seller"){
         window.location.href = "./index.html";
     }
+    else{
+        window.location.href = "./buyerDashbord.html";
+    }
 }
 
 const getIdSendTittle = (id) =>{
