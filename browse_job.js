@@ -42,11 +42,11 @@ const handleAllPost = () =>{
                 
                
                     
-                    <div class="wt-userlistingcontent">
-                        <div class="wt-contenthead">
+                    <div class="wt-userlistingcontent row">
+                        <div class=" col-md-8">
                             <div class="wt-title">
                                 <a href="#" style="text-decoration:none;"><i class="fa fa-check-circle"></i>${company_name} It Solutions</a>
-                                <h2>${element.tittle}</h2>
+                                <h2 class="job-ttile">${element.tittle}</h2>
                             </div>
                             <div class="wt-description">
                                 <p>${element.description.slice(0,190)}.........</p>
@@ -55,8 +55,8 @@ const handleAllPost = () =>{
                                 ${tagsHTML}
                             </div>
                         </div>
-                        <div class="wt-viewjobholder">
-                            <ul>
+                        <div class="col-md-4">
+                            <ul class="list-style-none">
                                 <li><span><i class="fa fa-dollar-sign wt-viewjobdollar"></i>${element.salary}</span></li>
                                 <li><span><em><img src="https://amentotech.com/htmls/worktern/images/flag/img-01.png" alt="img description"></em>England</span></li>
                                 <li><span><i class="far fa-folder wt-viewjobfolder"></i>Type: ${element.type}</span></li>

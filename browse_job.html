@@ -16,8 +16,26 @@
 
     <link rel="stylesheet" href="browse_job.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="dashbord.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- Custom link File(end) -->
+
+    <style>
+    .res-nav {
+    width: 100% !important;
+    margin: 0 !important;
+    margin-top: -70px !important;
+    background-color: #333 !important;
+    border-radius: 5px !important;
+    color: #fff !important;
+    padding: 16px 30px !important;
+    font-weight: 500 !important;
+    transition: 0.2s !important;
+    display: block !important;
+    line-height: 26px !important;
+    margin-top: 99px !important;
+}
+    </style>
   </head>
   <body style="background-color: #f7f7f7;">
     <header>
@@ -38,9 +56,15 @@
             <div class="wt-haslayout">
                 <div class="container">
                     <div class="row">
+                        <nav class="navbar res-nav navbar-expand-md  col-12 mb-5" style="margin-top: -373px !important;">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span> Filter Job
+                            </button>
+                  
+                        </nav>
                         <div id="wt-twocolumns" class="wt-twocolumns wt-haslayout">
-                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-4 float-left" style="position: sticky; inset: 109px 100px 50px 100px;">
-                                <aside id="wt-sidebar" class="wt-sidebar">
+                            <div class="col-md-4 float-left" style="position: sticky; inset: 109px 100px 50px 100px;">
+                                <aside class="col-2 seller-dashboard-left collapse navbar-collapse sidebar" id="sidebarMenu">
                                     <div class="wt-widget wt-effectiveholder" style="height: 180px;">
                                         <div class="wt-widgettitle">
                                             <h2>Find Job By Budget</h2>
@@ -89,7 +113,7 @@
                                  
                                 </aside>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-8 browse_job-right" style="float: right;margin-right: -33px; margin-top: -210px;">
+                            <div class="col-md-8 browse_job-right" style="float: right;margin-right: -33px; margin-top: -210px;">
                                 <div class="wt-userlistingholder wt-haslayout" id="view-all-post">
 
                                     

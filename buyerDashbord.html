@@ -24,6 +24,20 @@
         margin-right: 0% !important;
         padding: 15px 23px;
     }
+    .res-nav {
+    width: 100% !important;
+    margin: 0 !important;
+    margin-top: 15px !important;
+    background-color: #333 !important;
+    border-radius: 5px !important;
+    color: #fff !important;
+    padding: 16px 30px !important;
+    font-weight: 500 !important;
+    transition: 0.2s !important;
+    display: block !important;
+    line-height: 26px !important;
+    margin-top: 99px !important;
+}
     </style>
 
   </head>
@@ -34,10 +48,15 @@
       </nav>
     </header>
 
-    <body>
       <div class="row">
+        <nav class="navbar res-nav navbar-expand-md  col-12 mb-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> Dashboard Navigation
+            </button>
+
+        </nav>
         <div
-          class="col-2 seller-dashboard-left"
+          class="col-2 seller-dashboard-left collapse navbar-collapse sidebar" id="sidebarMenu"
           style="height: 837px; padding: 15px 14px;margin-top: 60px;"
         >
           <div>
@@ -118,7 +137,6 @@
         </div>
       </div>
       
-    </body>
 
 
     <section>

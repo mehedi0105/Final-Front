@@ -258,7 +258,7 @@ label {
     float: left;
     width: 100%;
 }
-.wt-contenthead .wt-title a {
+.wt-title a {
     display: block;
     color: #323232;
     margin: 0 0 9px;
@@ -271,7 +271,7 @@ label {
 a {
     text-decoration: none;
 }
-.wt-contenthead .wt-title h2 {
+.wt-title h2 {
     margin: 0;
     font-weight: 400;
     margin: 0 0 16px;
@@ -283,7 +283,7 @@ a {
 }
 .wt-title h2 {
     display: block;
-    font-size: 50px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 45px;
 }
@@ -397,4 +397,73 @@ p {
     overflow: scroll;
     height: 100vh;
 } */
- 
+ .list-style-none{
+    list-style: none;
+ }
+@media (min-width: 320px) and (max-width: 480px){
+    .browse_job-right{
+            margin-top: 158px !important;
+    }
+    .res-nav{
+        margin-top: -367px !important;
+    }
+
+.wt-innerbannerholder{
+    visibility: hidden;
+}
+.wt-twocolumns{
+    margin-top: -422px !important;
+}
+.seller-dashboard-left{
+        margin-top: 0px !important;
+}
+.job-ttile {
+    font-size: 14px !important;
+    line-height: 18px !important;
+    white-space: normal !important;
+}
+/* .wt-title h2 {
+    line-height: 0px;
+    white-space: initial;
+} */
+.list-style-none {
+    padding-left: 0px;
+    font-size: 14px;
+    margin-top: 7px;
+}
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+    .browse_job-right{
+        margin-top: 158px !important;
+}
+.row .res-nav{
+    margin-top: -367px !important;
+    margin-left: -88px !important;
+}
+
+.wt-innerbannerholder{
+/* visibility: hidden; */
+}
+.wt-twocolumns{
+margin-top: -120px !important;
+}
+.seller-dashboard-left{
+    margin-top: 0px !important;
+}
+.job-ttile {
+font-size: 14px !important;
+line-height: 18px !important;
+white-space: normal !important;
+}
+/* .wt-title h2 {
+line-height: 0px;
+white-space: initial;
+} */
+.list-style-none {
+padding-left: 0px;
+font-size: 14px;
+margin-top: 7px;
+}
+}
+@media (min-width: 769px) and (max-width: 1024px){}

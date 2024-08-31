@@ -37,13 +37,13 @@ window.onload = () =>{
                                 <div class="d-flex mb-3">
                                     <a href="#" class="btn btn-light btn-sm mr-2">🌐 Website</a>
                                     <a href="#" class="btn btn-light btn-sm mr-2">✉️ ${company_name}@test.com</a>
-                                    <a href="#" class="btn btn-light btn-sm mr-2">🐦 Twitter</a>
-                                    <a href="#" class="btn btn-light btn-sm mr-2">📘 Facebook</a>
-                                    <a href="#" class="btn btn-light btn-sm">📞 123456789</a>
+                                    <a href="#" class="btn btn-light btn-sm mr-2 job-details-btn">🐦 Twitter</a>
+                                    <a href="#" class="btn btn-light btn-sm mr-2 job-details-btn">📘 Facebook</a>
+                                    <a href="#" class="btn btn-light btn-sm job-details-btn">📞 123456789</a>
                                 </div>
                             </div>
                             <div>
-                              <button type="button" class="btn text-white" onclick="handleSubmitRequirment(event)" class="btn text-white" style="background-color: #26ae61; padding: 15px;" >Accept ProJect</button>
+                              <button type="button" class="btn text-white job-details-btn" onclick="handleSubmitRequirment(event)" class="btn text-white" style="background-color: #26ae61; padding: 15px;" >Accept ProJect</button>
                             </div>
                         </div>
                     </div>

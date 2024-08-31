@@ -381,7 +381,9 @@ handleDasboard()
 
 
 
-const saveViewRequermentData = async(job,id) =>{
+const saveViewRequermentData = (job,id) =>{
+  alert("save")
+  console.log(job," jobp")
   localStorage.setItem("view_Requ", job);
   localStorage.setItem("view_Requ_id", id);
   window.location.href = "./veiwRequirment.html"

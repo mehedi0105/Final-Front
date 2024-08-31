@@ -88,14 +88,14 @@ const handleDasboard =async() =>{
       }
       parent.innerHTML = `
       
-      <div id="dashbord-main">
+      <div id="dashbord-main w-100%">
             <div class="dashboard-text">
               <h2 style="font-size: 26px">Hi, ${username}</h2>
               <p>We are glad to see you again!</p>
             </div>
 
-            <div class="row">
-              <div class="box-item d-flex gap-5 fun-fact col-4">
+            <div class="row res-row">
+              <div class="box-item d-flex gap-5 fun-fact col-md-4">
                 <div class="box-left">
                   <p>Active Order</p>
                   <h1>${pendingTask}</h1>
@@ -105,7 +105,7 @@ const handleDasboard =async() =>{
                 </div>
               </div>
 
-              <div class="box-item d-flex gap-5 fun-fact col-4">
+              <div class="box-item d-flex gap-5 fun-fact col-md-4">
                 <div class="box-left">
                   <p>Completed Work</p>
                   <h1>${comTask}</h1>
@@ -115,7 +115,7 @@ const handleDasboard =async() =>{
                 </div>
               </div>
 
-              <div class="box-item d-flex gap-5 fun-fact col-4">
+              <div class="box-item d-flex gap-5 fun-fact col-md-4">
                 <div class="box-left">
                   <p>MyJobs</p>
                   <h1>${totalTask}</h1>
@@ -267,7 +267,7 @@ const hendlePostJob = () =>{
                 
 
                 <div class="d-flex flex-wrap gap-2">
-                  <div class="form-group " style="width: 48%;">
+                  <div class="form-group post-form-dashborad " style="width: 48%;">
                     <label for="job-type">job-type</label><br>
                     <select class="custom-select w-100 p-3" id="job-type" name="type" style="color: #444; border-color: #ece4e4;" required>
                         <option selected>Choose a Job-type...</option>
@@ -277,7 +277,7 @@ const hendlePostJob = () =>{
                     </select>
                   </div>
   
-                  <div class="form-group" style="width: 48%; margin-left:3% ">
+                  <div class="form-group post-form-dashborad" style="width: 48%; margin-left:3% ">
                     <label for="job_location">location</label><br>
                     <select class="custom-select w-100 p-3" id="job_location" name="location" style="color: #444; border-color: #ece4e4;" required>
                         <option selected>Choose a location...</option>

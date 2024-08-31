@@ -215,3 +215,34 @@ ul.dashboard-box-list > li {
     flex-flow: row wrap;
     transition: 0.3s;
 }
+
+/* Mobile Styles (320px — 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
+    .seller-dashboard-left{
+        width: 100% !important;
+    }
+    .post-form-dashborad,.seller-dashboard-right{
+        width: 100% !important;
+        margin: auto;
+    }
+    .job-details-btn{
+        visibility: hidden;
+    }
+
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    .post-form-dashborad{
+        width: 100% !important;
+    }
+    .job-details-btn{
+        visibility: hidden;
+    }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .post-form-dashborad{
+        width: 100% !important;
+    }
+    .job-details-btn{
+        visibility: hidden;
+    }
+}
