@@ -437,9 +437,8 @@ p {
     .browse_job-right{
         margin-top: 158px !important;
 }
-.row .res-nav{
-    margin-top: -367px !important;
-    margin-left: -88px !important;
+.row .res-nav {
+    margin-left: 0px !important;
 }
 
 .wt-innerbannerholder{
@@ -466,4 +465,6 @@ font-size: 14px;
 margin-top: 7px;
 }
 }
-@media (min-width: 769px) and (max-width: 1024px){}
+@media (min-width: 769px) and (max-width: 1024px){
+    
+}

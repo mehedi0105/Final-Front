@@ -74,3 +74,19 @@ ul.list-unstyled li {
     color: #26ae61;
     margin-right: 10px;
 }
+
+@media (min-width: 320px) and (max-width: 480px){
+    .company_logo-ress{
+        width: 60px;
+        height: 60px;
+    }
+    .flex-grow-1-ress h5, .flex-grow-1-ress p{
+        font-size: 14px;
+    }
+}
+@media (min-width: 481px) and (max-width: 768px){
+    body{
+        width: 40%;
+        margin: 0 auto;
+    }
+}

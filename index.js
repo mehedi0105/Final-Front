@@ -28,16 +28,16 @@ const handleJob = () => {
                   );
                   li.innerHTML = `
                       <!-- Job Listing Details -->
-                      <div class="job-listing-details" onclick="handleSingleJobPost(${element.id})">
+                      <div class="job-listing-details job-listing-details-ress" onclick="handleSingleJobPost(${element.id})">
                           <!-- Logo -->
                           <div class="job-listing-company-logo text-center mb-3">
                               <img class="company_logo img-fluid" src="https://workscout.in/wp-content/uploads/job-manager-uploads/company_logo/2021/11/company-logo-06-300x300.png" alt="Company Logo" />
                           </div>
 
                           <!-- Details -->
-                          <div class="job-listing-description text-center" style="width: 72%;">
-                              <h4 class="job-listing-company" style="font-size:16px;">${company_name} IT Solutions</h4>
-                              <h5 class="job-listing-title" style="font-size:17px;">
+                          <div class="job-listing-description job-listing-description-ress text-center" style="width: 72%;">
+                              <h4 class="job-listing-company job-listing-company-ress" style="font-size:16px;">${company_name} IT Solutions</h4>
+                              <h5 class="job-listing-title job-listing-title-ress" style="font-size:17px;">
                                   ${element.tittle.slice(0, 35)}...
                               </h5>
                               <div class="listing-types-list">
@@ -47,7 +47,7 @@ const handleJob = () => {
                       </div>
 
                       <!-- Job Listing Footer -->
-                      <div class="job-listing-footer">
+                      <div class="job-listing-footer job-listing-footer-ress">
                           <ul class="list-unstyled text-center ms-auto" style="display: flex; flex-wrap: wrap; gap: 1pc;">
                               <li class="job-listing-footer-company mb-2">
                                   <i class="icon-material-outline-business"></i>

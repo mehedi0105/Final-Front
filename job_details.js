@@ -37,11 +37,11 @@ const jobDetails = (button) =>{
                     <div class="card top-box mt-4" style="border: none">
                         <div class="card-body top-box-body d-flex">
                             <div class="mr-4" style="margin-right:20px;">
-                                <img class="company_logo"
+                                <img class="company_logo company_logo-ress"
                                      src="https://workscout.in/wp-content/uploads/job-manager-uploads/company_logo/2021/11/company-logo-03-150x150.png"
                                      height="117px;" alt=""/>
                             </div>
-                            <div class="flex-grow-1">
+                            <div class="flex-grow-1 flex-grow-1-ress">
                                 <h5>${company_name}</h5>
                                 <p class="text-muted">${company_name} in tech industry</p>
                                 <div class="d-flex mb-3">
