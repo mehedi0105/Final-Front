@@ -70,6 +70,7 @@ window.onload = () =>{
                 </div>
             `;
             parent.appendChild(div);
+            console.log("Mehedi")
             }
         });
                
