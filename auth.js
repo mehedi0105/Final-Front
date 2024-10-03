@@ -98,12 +98,13 @@ const handleLogin = (event) => {
 
         }
       });
-    });
-  if(check == 2){
+      if(check == 2){
     console.log("woe")
     notifyLoginInvalid()
     return;
   }
+ });
+  
 
 
   fetch("https://final-s1v0.onrender.com/api/auth/login/", {
