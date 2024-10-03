@@ -113,6 +113,9 @@ const handleLogin = (event) => {
           })
           .catch((error) => console.error("Error:", error));
       }
+      else{
+        notifyLoginInvalid()
+      }
     })
 
   
