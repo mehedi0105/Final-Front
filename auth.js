@@ -100,6 +100,7 @@ const handleLogin = (event) => {
       });
     });
   if(check == 2){
+    console.log("woe")
     notifyLoginInvalid()
     return;
   }
