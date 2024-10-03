@@ -7,11 +7,11 @@ window.onload = () =>{
         parent.innerHTML = "";
     }
     
+    console.log("anser")
     fetch(`https://final-s1v0.onrender.com/seller/project_requirment/`)
     .then((res) => res.json())
     .then(async (data) => {
         {
-            console.log("anser")
             let cnt =0 ;
             data.forEach(async(element) => {
                 console.log(element.id,"  ",id)
