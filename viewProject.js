@@ -14,8 +14,8 @@ window.onload = () =>{
         {
             let cnt =0 ;
             data.forEach(async(element) => {
-                // console.log(element.id,"  ",id)
     const submited_seller = localStorage.getItem('submited_seller');
+                console.log(element.job,"  ",submited_job)
     if(String(element.job) == submited_job && cnt === 0 && String(element.seller) === submited_seller){
                     cnt++;
                 const company_name = await getIdSendUsername(element.seller);
