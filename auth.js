@@ -83,13 +83,11 @@ const handleLogin = (event) => {
   };
 
 
-  let check = "1";
   fetch("https://final-s1v0.onrender.com//GetAllUser/")
     .then((res) => res.json())
     .then(async(array) => {
+      let check = "1";
       array.forEach(async(element) => {
-        console.log(element.username," ",form_data.get("username"))
-        // console.log(username)
         if ((element.username) == form_data.get("username")) {
           check ="2";
         }
@@ -99,10 +97,10 @@ const handleLogin = (event) => {
         }
       });
       if(check == 1){
-    console.log("woe")
-    notifyLoginInvalid()
-    return;
-  }
+      console.log("woe")
+      notifyLoginInvalid()
+      return;
+    }
  });
   
 
