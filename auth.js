@@ -83,6 +83,26 @@ const handleLogin = (event) => {
   };
 
 
+  let check = "1";
+  fetch("https://final-s1v0.onrender.com//GetAllUser/")
+    .then((res) => res.json())
+    .then(async(array) => {
+      array.forEach(async(element) => {
+        console.log(element.username," ",form_data.get("username"))
+        // console.log(username)
+        if ((element.username) == form_data.get("username")) {
+          check ="2";
+        }
+        if (element.email == form_data.get("email")) {
+          check ="2";
+
+        }
+      });
+    });
+  if(check == 2){
+    notifyLoginInvalid()
+    return;
+  }
 
 
   fetch("https://final-s1v0.onrender.com/api/auth/login/", {
@@ -113,9 +133,7 @@ const handleLogin = (event) => {
           })
           .catch((error) => console.error("Error:", error));
       }
-      else{
-        notifyLoginInvalid()
-      }
+     
     })
 
   
