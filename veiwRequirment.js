@@ -11,7 +11,7 @@ window.onload = () =>{
     .then((res) => res.json())
     .then(async (data) => {
         {
-            console.log("anser")
+            console.log(parent)
             let cnt =0 ;
             data.forEach(async(element) => {
                 console.log(element.id,"  ",id)
