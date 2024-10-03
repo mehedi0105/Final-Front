@@ -9,6 +9,17 @@ const notifyLogin = ()=> {
     }).showToast();
 }
 
+const notifyLoginInvalid = ()=> {
+    Toastify({
+        text: "your login information is invalid",
+        duration: 3000,
+        gravity: "top",
+        position: "center", 
+        backgroundColor: "#800000",
+        close: true
+    }).showToast();
+}
+
 const notifyPassword = (type) => {
     let val ="";
     if(type=="pass"){
