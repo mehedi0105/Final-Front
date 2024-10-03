@@ -57,7 +57,6 @@ localStorage.setItem("check",check)
     .then((res) => res.json())
     .then(async(data) => {
       await notifyRegister ()
-      window.location.href = "./login.html";
     })
     .catch((error) => {
       error.json().then((errorMessage) => {
