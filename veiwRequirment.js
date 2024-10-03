@@ -1,4 +1,5 @@
 window.onload = () => {
+    alert();
     const id = localStorage.getItem('view_Requ');
     const parent = document.getElementById("job_main");
     const token = localStorage.getItem("token");
