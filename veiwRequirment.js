@@ -1,6 +1,6 @@
 // alert()
 window.onload = () =>{
-    const id = localStorage.getItem('view_Requ_id');
+    const id = localStorage.getItem('view_Requ');
     const parent = document.getElementById("job_main");
     const token = localStorage.getItem("token");
     if (parent.innerHTML !== "") {
@@ -14,7 +14,7 @@ window.onload = () =>{
             let cnt =0 ;
             data.forEach(async(element) => {
                 console.log(element.id,"  ",id)
-                if(String(element.id) == id && cnt === 0){
+                if(String(element.job) == id && cnt === 0){
                     cnt++;
                 const company_name = await getIdSendUsername(element.buyer);
                 const tittle = await getIdSendTittle(element.job);
