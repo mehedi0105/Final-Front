@@ -93,6 +93,20 @@ const handleLogin = (event) => {
         if (element.email == form_data.get("email")) {
           check ="2";
 
+<<<<<<< HEAD
+=======
+  fetch("https://final-s1v0.onrender.com//GetAllUser/")
+    .then((res) => res.json())
+    .then(async(array) => {
+      let check = "1";
+      array.forEach(async(element) => {
+        if ((element.username) == form_data.get("username")) {
+          check ="2";
+        }
+        if (element.email == form_data.get("email")) {
+          check ="2";
+
+>>>>>>> aa305ac7130d11f71f82e720407b9bc3cba2a3e8
         }
       });
       if(check == 1){
@@ -101,6 +115,10 @@ const handleLogin = (event) => {
       return;
     }
  });
+<<<<<<< HEAD
+=======
+  
+>>>>>>> aa305ac7130d11f71f82e720407b9bc3cba2a3e8
 
 
   fetch("https://final-s1v0.onrender.com/api/auth/login/", {
@@ -131,6 +149,7 @@ const handleLogin = (event) => {
           })
           .catch((error) => console.error("Error:", error));
       }
+     
     })
 
   
