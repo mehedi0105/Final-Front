@@ -57,7 +57,6 @@ localStorage.setItem("check",check)
     .then((res) => res.json())
     .then(async(data) => {
       await notifyRegister ()
-      window.location.href = "./login.html";
     })
     .catch((error) => {
       error.json().then((errorMessage) => {
@@ -83,7 +82,25 @@ const handleLogin = (event) => {
     password: form_data.get("password"),
   };
 
+  fetch("https://final-s1v0.onrender.com//GetAllUser/")
+    .then((res) => res.json())
+    .then(async(array) => {
+      let check = "1";
+      array.forEach(async(element) => {
+        if ((element.username) == form_data.get("username")) {
+          check ="2";
+        }
+        if (element.email == form_data.get("email")) {
+          check ="2";
 
+        }
+      });
+      if(check == 1){
+      console.log("woe")
+      notifyLoginInvalid()
+      return;
+    }
+ });
 
 
   fetch("https://final-s1v0.onrender.com/api/auth/login/", {

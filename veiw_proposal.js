@@ -41,7 +41,7 @@ window.onload = () =>{
                                 </div>
                             </div>
                             <div>
-                              <button type="button" class="btn text-white job-details-btn" onclick = "SaveData(${element.id})" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
+                              <button type="button" class="btn text-white job-details-btn" onclick = "SaveData(${element.id},${element.job})" style="background-color: #26ae61; padding: 15px" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ window.onload = () =>{
                                         <p style="margin-left: 46px;" class="Description">${element.cover_letter}</p>
                                         </li>
                                     </ul>
-                                    <button type="button" class="btn text-white" onclick = "SaveData(${element.id})" style="background-color: #26ae61; padding: 15px; width: 48%;" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
+                                    <button type="button" class="btn text-white" onclick = "SaveData(${element.id},${element.job})" style="background-color: #26ae61; padding: 15px; width: 48%;" data-bs-toggle="modal" data-bs-target="#applyModal">Accept Proposal</button>
                                     <button type="button" class="btn text-white" style="background-color: red; padding: 15px;width: 48%;" onclick="handleRejectProposal(${element.id})">Reject Proposal</button>
                                 </div>
                             </div>
@@ -91,8 +91,9 @@ const handleRejectProposal = (id) =>{
         })
 }
 
-const SaveData = (id) =>{
-    
+const SaveData = (id,job) =>{
+    console.log(job)
+    localStorage.setItem("job_id",job)
     localStorage.setItem("ssss",id);
 }
 
@@ -113,6 +114,7 @@ const UpdateApplyjobOne = async()=>{
     };
     
     console.log(UpdateForm)
+    // alert()
 
     fetch(`https://final-s1v0.onrender.com/seller/apply_job/${cover_id}/`,{
         method : 'PUT',
@@ -125,6 +127,12 @@ const UpdateApplyjobOne = async()=>{
         .then((res)=>res.json())
         .then((data)=>{
             Requirmentnotify()
+            console.log(data)
+            alert()
+        })
+        .catch((error)=>{
+            console.log(error)
+            alert('error')
         })
 }
 
@@ -155,6 +163,7 @@ const handleProjectRequ = (event) =>{
         .then(async(data)=>{
             await UpdateApplyjobOne()
             window.location.href = "./buyerDashbord.html"
+            console.log(data)
         })
         .catch((error)=>{
             console.log(error);

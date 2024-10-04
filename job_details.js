@@ -99,6 +99,7 @@ const jobDetails = (button) =>{
 
 }
 
+
 window.onload = () =>{
     const token = localStorage.getItem("token");
     const user_type = localStorage.getItem("user_type");
